@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Tassyir for WooCommerce 1.0.0\n"
+"Project-Id-Version: Tassyir for WooCommerce 1.0.1\n"
 "Report-Msgid-Bugs-To: https://tassyir.io\n"
 "Last-Translator: Tassyir\n"
 "Language-Team: Tassyir\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-30T20:04:27+00:00\n"
+"POT-Creation-Date: 2026-11-01T23:45:33+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: tassyir-for-woocommerce\n"
@@ -42,276 +42,309 @@ msgstr ""
 msgid "Sorry, you are not allowed to do this."
 msgstr ""
 
-#: includes/Admin/Cod_Settings_Page.php:63
+#: includes/Admin/Cod_Settings_Page.php:77
+msgid "Unsaved changes"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:79
+msgid "Save changes"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:91
+msgid "Placement"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:92
+msgid "Fields"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:93
+msgid "Language and texts"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:94
+msgid "Colours"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:95
+msgid "After the order"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:96
+msgid "Spam protection"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:97
+msgid "Pixels"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:115
 msgid "The cash-on-delivery form creates a normal WooCommerce order, which is then sent to Tassyir like any other. Delivery fees, wilayas, communes and desks come from your Tassyir store and carrier, so they are not set here."
 msgstr ""
 
+#: includes/Admin/Cod_Settings_Page.php:117
+msgid "Copied"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:117
+msgid "Copy"
+msgstr ""
+
 #. translators: 1: shortcode, 2: block name.
-#: includes/Admin/Cod_Settings_Page.php:66
+#: includes/Admin/Cod_Settings_Page.php:120
 #, php-format
 msgid "Place it anywhere with the shortcode %1$s (also in Elementor's shortcode widget) or the \"%2$s\" block."
 msgstr ""
 
 #. translators: 1: shortcode, 2: block name.
-#: includes/Admin/Cod_Settings_Page.php:66
+#: includes/Admin/Cod_Settings_Page.php:120
 msgid "Tassyir COD form"
 msgstr ""
 
-#: includes/Admin/Cod_Settings_Page.php:69
-msgid "Placement"
+#: includes/Admin/Cod_Settings_Page.php:129
+msgid "Sections"
 msgstr ""
 
-#: includes/Admin/Cod_Settings_Page.php:70
+#: includes/Admin/Cod_Settings_Page.php:162
 msgid "Product pages"
 msgstr ""
 
-#: includes/Admin/Cod_Settings_Page.php:70
-msgid "Show on every product page"
+#: includes/Admin/Cod_Settings_Page.php:162
+msgid "Show the form on every product page."
 msgstr ""
 
-#: includes/Admin/Cod_Settings_Page.php:73
+#: includes/Admin/Cod_Settings_Page.php:165
 msgid "Add to cart"
 msgstr ""
 
-#: includes/Admin/Cod_Settings_Page.php:75
+#: includes/Admin/Cod_Settings_Page.php:167
 msgid "Replace Add to cart with the form"
 msgstr ""
 
-#: includes/Admin/Cod_Settings_Page.php:76
+#: includes/Admin/Cod_Settings_Page.php:168
 msgid "Replace Add to cart, and hide the cart & checkout"
 msgstr ""
 
-#: includes/Admin/Cod_Settings_Page.php:77
+#: includes/Admin/Cod_Settings_Page.php:169
 msgid "Keep Add to cart under the form"
 msgstr ""
 
-#: includes/Admin/Cod_Settings_Page.php:83
-msgid "Fields"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:85
+#: includes/Admin/Cod_Settings_Page.php:184
 msgid "Quantity selector"
 msgstr ""
 
-#: includes/Admin/Cod_Settings_Page.php:86
-msgid "Second phone (optional for the customer)"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:87
-#: includes/Admin/Cod_Settings_Page.php:259
-msgid "Address"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:88
-msgid "Address is required"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:89
-#: includes/Admin/Cod_Settings_Page.php:260
-msgid "Note"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:90
-msgid "Icons in the fields"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:91
-msgid "Desk delivery option (only where your carrier has a desk)"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:92
-msgid "Quantity offers (from Tassyir)"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:93
-msgid "Show the saving on offers"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:96
-msgid "Show"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:100
-msgid "Language and texts"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:103
-msgid "Form language"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:105
-msgid "The site language (Arabic otherwise)"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:114
-msgid "Text direction"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:116
-msgid "From the language"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:117
-msgid "Right to left"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:118
-msgid "Left to right"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:123
-msgid "Leave a text empty to keep the default shown in grey."
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:148
-msgid "Colours"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:150
-msgid "Main colour (button, selection)"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:151
-msgid "Button text"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:152
-msgid "Background"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:153
-msgid "Text"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:154
-msgid "Borders"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:166
-msgid "Corner radius"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:171
-msgid "After the order"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:174
-msgid "The customer sees"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:176
-msgid "WooCommerce's order received page"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:177
-msgid "My own page (URL below)"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:178
-msgid "A message on the form"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:184
-msgid "Thank-you page URL"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:186
-msgid "Order number and total are added as ?order=&total=. Orders Tassyir holds as possible spam get no WooCommerce order: with the order received page they see the message on the form instead."
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:190
-msgid "Spam protection"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:191
-msgid "Tassyir checks every order before it exists (honeypot, phone and device limits, your spam rules). Behind Cloudflare, every visitor reaches your server from a Cloudflare address: tick this so Tassyir uses the visitor's real address instead (it checks that the request really came through Cloudflare)."
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:193
-msgid "Cloudflare"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:193
-msgid "My site is behind Cloudflare"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:196
-msgid "Pixels"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:197
-msgid "Sends Purchase with Tassyir's event id, so it deduplicates with Tassyir's server-side events. The pixel itself must already be on your site."
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:199
-msgid "PixelYourSite is active and already sends Purchase from the order received page: keep these off to avoid counting each order twice."
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:202
-msgid "Meta Pixel"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:202
-msgid "Send Purchase"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:203
-msgid "TikTok Pixel"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:203
-msgid "Send CompletePayment"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:206
-msgid "Save changes"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:251
-msgid "Heading"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:252
-msgid "Button"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:253
-msgid "Success message"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:254
-msgid "Name"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:255
-msgid "Phone"
-msgstr ""
-
-#: includes/Admin/Cod_Settings_Page.php:256
+#: includes/Admin/Cod_Settings_Page.php:185
+#: includes/Admin/Cod_Settings_Page.php:444
 msgid "Second phone"
 msgstr ""
 
-#: includes/Admin/Cod_Settings_Page.php:257
+#: includes/Admin/Cod_Settings_Page.php:185
+msgid "Optional for the customer."
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:186
+#: includes/Admin/Cod_Settings_Page.php:447
+msgid "Address"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:187
+msgid "Address required"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:187
+msgid "Customers must fill in the address."
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:188
+#: includes/Admin/Cod_Settings_Page.php:448
+msgid "Note"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:189
+msgid "Icons in the fields"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:189
+msgid "Small icons inside the fields."
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:190
+msgid "Desk delivery option"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:190
+msgid "Only where your carrier has a desk."
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:191
+msgid "Quantity offers"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:191
+msgid "Quantity offers you set up in Tassyir."
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:192
+msgid "Show the saving on offers"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:211
+msgid "Form language"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:213
+msgid "The site language (Arabic otherwise)"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:222
+msgid "Text direction"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:224
+msgid "From the language"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:225
+msgid "Right to left"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:226
+msgid "Left to right"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:239
+msgid "Leave a text empty to keep the default shown in grey."
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:240
+msgid "Language of the texts"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:265
+msgid "Main colour (button, selection)"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:266
+msgid "Button text"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:267
+msgid "Background"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:268
+msgid "Text"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:269
+msgid "Borders"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:279
+msgid "Corner radius"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:294
+msgid "The customer sees"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:296
+msgid "WooCommerce's order received page"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:297
+msgid "My own page (URL below)"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:298
+msgid "A message on the form"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:304
+msgid "Thank-you page URL"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:305
+msgid "Order number and total are added as ?order=&total=. Orders Tassyir holds as possible spam get no WooCommerce order: with the order received page they see the message on the form instead."
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:323
+msgid "Tassyir checks every order before it exists (honeypot, phone and device limits, your spam rules). Behind Cloudflare, every visitor reaches your server from a Cloudflare address: tick this so Tassyir uses the visitor's real address instead (it checks that the request really came through Cloudflare)."
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:324
+msgid "Cloudflare"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:324
+msgid "My site is behind Cloudflare"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:334
+msgid "Sends Purchase with Tassyir's event id, so it deduplicates with Tassyir's server-side events. The pixel itself must already be on your site."
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:338
+msgid "PixelYourSite is active and already sends Purchase from the order received page: keep these off to avoid counting each order twice."
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:340
+msgid "Meta Pixel"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:340
+msgid "Send Purchase"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:341
+msgid "TikTok Pixel"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:341
+msgid "Send CompletePayment"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:439
+msgid "Heading"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:440
+msgid "Button"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:441
+msgid "Success message"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:442
+msgid "Name"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:443
+msgid "Phone"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:445
 msgid "Wilaya"
 msgstr ""
 
-#: includes/Admin/Cod_Settings_Page.php:258
+#: includes/Admin/Cod_Settings_Page.php:446
 msgid "Commune"
 msgstr ""
 
-#: includes/Admin/Cod_Settings_Page.php:261
+#: includes/Admin/Cod_Settings_Page.php:449
 msgid "Home delivery"
 msgstr ""
 
-#: includes/Admin/Cod_Settings_Page.php:262
+#: includes/Admin/Cod_Settings_Page.php:450
 msgid "Desk delivery"
 msgstr ""
 
-#: includes/Admin/Cod_Settings_Page.php:263
+#: includes/Admin/Cod_Settings_Page.php:451
 msgid "Offers heading"
 msgstr ""
 
-#: includes/Admin/Cod_Settings_Page.php:264
+#: includes/Admin/Cod_Settings_Page.php:452
 msgid "Under the total"
 msgstr ""
 
@@ -497,8 +530,8 @@ msgid "Status check"
 msgstr ""
 
 #: includes/Admin/Labels.php:114
-#: includes/Admin/Settings_Page.php:335
-#: includes/Admin/Settings_Page.php:411
+#: includes/Admin/Settings_Page.php:369
+#: includes/Admin/Settings_Page.php:519
 msgid "Connection"
 msgstr ""
 
@@ -547,7 +580,7 @@ msgid "Connect this store to start sending your orders to Tassyir."
 msgstr ""
 
 #: includes/Admin/Onboarding.php:133
-#: includes/Admin/Settings_Page.php:387
+#: includes/Admin/Settings_Page.php:425
 msgid "Connect to Tassyir"
 msgstr ""
 
@@ -608,153 +641,282 @@ msgid "Tassyir’s privacy policy: %s"
 msgstr ""
 
 #: includes/Admin/Settings_Page.php:136
+#: includes/Admin/Settings_Page.php:372
 msgid "Settings"
 msgstr ""
 
-#: includes/Admin/Settings_Page.php:336
+#: includes/Admin/Settings_Page.php:317
+msgid "Not connected"
+msgstr ""
+
+#: includes/Admin/Settings_Page.php:349
+msgid "Send this store's orders and products to your Tassyir dashboard."
+msgstr ""
+
+#: includes/Admin/Settings_Page.php:354
+msgid "Open Tassyir"
+msgstr ""
+
+#: includes/Admin/Settings_Page.php:356
+msgid "(opens in a new tab)"
+msgstr ""
+
+#: includes/Admin/Settings_Page.php:370
 msgid "Checkout form"
 msgstr ""
 
-#: includes/Admin/Settings_Page.php:362
+#: includes/Admin/Settings_Page.php:397
 msgid "Connected to Tassyir. New orders are now sent automatically."
 msgstr ""
 
-#: includes/Admin/Settings_Page.php:363
+#: includes/Admin/Settings_Page.php:398
 msgid "Disconnected from Tassyir."
 msgstr ""
 
-#: includes/Admin/Settings_Page.php:364
+#: includes/Admin/Settings_Page.php:399
 msgid "Product sync started. It runs in the background, 20 products at a time."
 msgstr ""
 
-#: includes/Admin/Settings_Page.php:365
+#: includes/Admin/Settings_Page.php:400
 msgid "Orders are being queued in the background."
 msgstr ""
 
-#: includes/Admin/Settings_Page.php:366
+#: includes/Admin/Settings_Page.php:401
 msgid "The old manual webhooks were deleted."
 msgstr ""
 
-#: includes/Admin/Settings_Page.php:367
+#: includes/Admin/Settings_Page.php:402
 msgid "The problems log was cleared."
 msgstr ""
 
-#: includes/Admin/Settings_Page.php:368
+#: includes/Admin/Settings_Page.php:403
 msgid "Checkout form settings saved."
 msgstr ""
 
-#: includes/Admin/Settings_Page.php:374
+#: includes/Admin/Settings_Page.php:409
 msgid "Please choose a valid date."
 msgstr ""
 
-#: includes/Admin/Settings_Page.php:384
+#: includes/Admin/Settings_Page.php:422
 msgid "Connect your store to Tassyir"
 msgstr ""
 
-#: includes/Admin/Settings_Page.php:385
+#: includes/Admin/Settings_Page.php:423
 msgid "One last step: connect this store to start sending your orders to Tassyir."
 msgstr ""
 
 #. translators: %s: Tassyir dashboard host, e.g. app.tassyir.io.
-#: includes/Admin/Settings_Page.php:391
+#: includes/Admin/Settings_Page.php:429
 #, php-format
 msgid "You will choose your business and store on %s, then come back here."
 msgstr ""
 
-#: includes/Admin/Settings_Page.php:393
-msgid "Once connected, this plugin sends to your Tassyir store:"
+#: includes/Admin/Settings_Page.php:435
+msgid "Press Connect."
 msgstr ""
 
-#: includes/Admin/Settings_Page.php:395
-msgid "Orders: every new order, kept in a queue and retried until Tassyir confirms it."
-msgstr ""
-
-#: includes/Admin/Settings_Page.php:396
-msgid "Products: names, prices, SKUs, variations and product photos, so Tassyir can create them."
-msgstr ""
-
-#: includes/Admin/Settings_Page.php:397
-msgid "Store health: plugin, WordPress and WooCommerce versions, and the queue size."
-msgstr ""
-
-#: includes/Admin/Settings_Page.php:413
-msgid "Business"
-msgstr ""
-
-#: includes/Admin/Settings_Page.php:414
-msgid "Store"
-msgstr ""
-
-#: includes/Admin/Settings_Page.php:415
-msgid "Status"
-msgstr ""
-
-#: includes/Admin/Settings_Page.php:417
-msgid "Orders queue"
-msgstr ""
-
-#. translators: 1: orders waiting, 2: orders failed.
-#: includes/Admin/Settings_Page.php:421
-#, php-format
-msgid "%1$d waiting, %2$d failed"
-msgstr ""
-
-#: includes/Admin/Settings_Page.php:429
-msgid "Last order sent"
-msgstr ""
-
-#: includes/Admin/Settings_Page.php:430
-msgid "None yet"
-msgstr ""
-
-#: includes/Admin/Settings_Page.php:432
-msgid "Products"
-msgstr ""
-
-#: includes/Admin/Settings_Page.php:433
-msgid "Plugin version"
-msgstr ""
-
+#. translators: %s: Tassyir dashboard host, e.g. app.tassyir.io.
 #: includes/Admin/Settings_Page.php:437
-msgid "Sync all products"
+#, php-format
+msgid "Choose your business and store on %s."
 msgstr ""
 
 #: includes/Admin/Settings_Page.php:438
-msgid "Reconnect"
+msgid "Come back here: new orders are sent automatically."
 msgstr ""
 
-#: includes/Admin/Settings_Page.php:439
-msgid "Disconnect"
+#: includes/Admin/Settings_Page.php:440
+msgid "Once connected, this plugin sends to your Tassyir store:"
 msgstr ""
 
-#: includes/Admin/Settings_Page.php:439
-msgid "Disconnect this site from Tassyir? Orders will stop being sent."
+#: includes/Admin/Settings_Page.php:443
+msgid "Orders: every new order, kept in a queue and retried until Tassyir confirms it."
 msgstr ""
 
-#: includes/Admin/Settings_Page.php:447
+#: includes/Admin/Settings_Page.php:444
+msgid "Products: names, prices, SKUs, variations and product photos, so Tassyir can create them."
+msgstr ""
+
+#: includes/Admin/Settings_Page.php:445
+msgid "Store health: plugin, WordPress and WooCommerce versions, and the queue size."
+msgstr ""
+
+#: includes/Admin/Settings_Page.php:476
 msgid "See every Tassyir job in Scheduled Actions"
 msgstr ""
 
-#: includes/Admin/Settings_Page.php:471
+#: includes/Admin/Settings_Page.php:498
+#: includes/Admin/Settings_Page.php:708
+#: includes/Admin/Settings_Page.php:712
+msgid "Reconnect"
+msgstr ""
+
+#: includes/Admin/Settings_Page.php:526
+msgid "Business"
+msgstr ""
+
+#: includes/Admin/Settings_Page.php:527
+msgid "Store"
+msgstr ""
+
+#. translators: %s: latest plugin version, e.g. 1.2.0.
+#: includes/Admin/Settings_Page.php:532
+#, php-format
+msgid "Update available: %s"
+msgstr ""
+
+#: includes/Admin/Settings_Page.php:534
+msgid "Plugin version"
+msgstr ""
+
+#. translators: %s: time ago, e.g. 3 hours.
+#: includes/Admin/Settings_Page.php:537
+#: includes/Admin/Settings_Page.php:562
+#, php-format
+msgid "%s ago"
+msgstr ""
+
+#. translators: %s: time ago, e.g. 3 hours.
+#: includes/Admin/Settings_Page.php:537
+#: includes/Admin/Settings_Page.php:759
 msgid "Checking…"
 msgstr ""
 
-#: includes/Admin/Settings_Page.php:474
+#: includes/Admin/Settings_Page.php:538
+msgid "Last check-in"
+msgstr ""
+
+#: includes/Admin/Settings_Page.php:558
+msgid "Orders waiting"
+msgstr ""
+
+#: includes/Admin/Settings_Page.php:559
+msgid "Failed orders"
+msgstr ""
+
+#: includes/Admin/Settings_Page.php:563
+#: includes/Admin/Settings_Page.php:565
+msgid "Last order sent"
+msgstr ""
+
+#: includes/Admin/Settings_Page.php:565
+msgid "None yet"
+msgstr ""
+
+#: includes/Admin/Settings_Page.php:567
+msgid "Products synced"
+msgstr ""
+
+#: includes/Admin/Settings_Page.php:577
+msgid "Products"
+msgstr ""
+
+#: includes/Admin/Settings_Page.php:581
+msgid "New and edited products are sent automatically. Sync all to send every product again."
+msgstr ""
+
+#: includes/Admin/Settings_Page.php:587
+msgid "Sync all products"
+msgstr ""
+
+#: includes/Admin/Settings_Page.php:601
+msgid "Send older orders"
+msgstr ""
+
+#: includes/Admin/Settings_Page.php:605
+msgid "Orders placed before you connected are not sent automatically. Send every order since a date, up to 90 days back. Orders Tassyir already has are skipped."
+msgstr ""
+
+#: includes/Admin/Settings_Page.php:610
+msgid "Date"
+msgstr ""
+
+#: includes/Admin/Settings_Page.php:612
+msgid "Send orders"
+msgstr ""
+
+#: includes/Admin/Settings_Page.php:629
+msgid "Old manual webhooks"
+msgstr ""
+
+#: includes/Admin/Settings_Page.php:633
+msgid "Before this plugin, these WooCommerce webhooks sent your orders to Tassyir. The plugin now does it, so they are no longer needed (duplicates are ignored until you delete them)."
+msgstr ""
+
+#: includes/Admin/Settings_Page.php:638
+msgid "Delete them"
+msgstr ""
+
+#: includes/Admin/Settings_Page.php:638
+msgid "Delete these webhooks permanently?"
+msgstr ""
+
+#: includes/Admin/Settings_Page.php:649
+msgid "Clear"
+msgstr ""
+
+#: includes/Admin/Settings_Page.php:654
+msgid "Recent problems"
+msgstr ""
+
+#: includes/Admin/Settings_Page.php:662
+msgid "No problems. Orders and products are going through."
+msgstr ""
+
+#: includes/Admin/Settings_Page.php:667
+msgid "When"
+msgstr ""
+
+#: includes/Admin/Settings_Page.php:668
+msgid "What"
+msgstr ""
+
+#: includes/Admin/Settings_Page.php:669
+msgid "Problem"
+msgstr ""
+
+#: includes/Admin/Settings_Page.php:702
+msgid "Danger zone"
+msgstr ""
+
+#: includes/Admin/Settings_Page.php:709
+msgid "Choose another business or store, or repair the connection."
+msgstr ""
+
+#: includes/Admin/Settings_Page.php:716
+#: includes/Admin/Settings_Page.php:720
+msgid "Disconnect"
+msgstr ""
+
+#: includes/Admin/Settings_Page.php:717
+msgid "Orders stop being sent. Orders already in Tassyir stay there."
+msgstr ""
+
+#: includes/Admin/Settings_Page.php:720
+msgid "Disconnect this site from Tassyir? Orders will stop being sent."
+msgstr ""
+
+#: includes/Admin/Settings_Page.php:742
+#: includes/Admin/Settings_Page.php:752
+msgid "Needs attention"
+msgstr ""
+
+#: includes/Admin/Settings_Page.php:766
 msgid "Online"
 msgstr ""
 
 #. translators: %s: time ago, e.g. 3 hours.
-#: includes/Admin/Settings_Page.php:477
+#: includes/Admin/Settings_Page.php:773
 #, php-format
 msgid "Last seen %s ago"
 msgstr ""
 
-#: includes/Admin/Settings_Page.php:486
+#: includes/Admin/Settings_Page.php:784
 msgid "Never synced. New and edited products are sent automatically."
 msgstr ""
 
 #. translators: %d: number of products.
-#: includes/Admin/Settings_Page.php:491
+#: includes/Admin/Settings_Page.php:789
 #, php-format
 msgid "Sync running: %d product sent so far."
 msgid_plural "Sync running: %d products sent so far."
@@ -762,91 +924,37 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. translators: 1: number of products, 2: date and time.
-#: includes/Admin/Settings_Page.php:495
+#: includes/Admin/Settings_Page.php:793
 #, php-format
 msgid "%1$d product synced on %2$s."
 msgid_plural "%1$d products synced on %2$s."
 msgstr[0] ""
 msgstr[1] ""
 
-#. translators: 1: installed version, 2: latest version.
-#: includes/Admin/Settings_Page.php:508
-#, php-format
-msgid "%1$s (version %2$s is available)"
+#: includes/Admin/Settings_Page.php:809
+msgid "Not synced yet"
 msgstr ""
 
-#: includes/Admin/Settings_Page.php:519
-msgid "Send orders since…"
+#: includes/Admin/Settings_Page.php:816
+msgid "Running…"
 msgstr ""
 
-#: includes/Admin/Settings_Page.php:520
-msgid "Queues every order created since this date (90 days at most) that Tassyir has not received yet."
-msgstr ""
-
-#: includes/Admin/Settings_Page.php:524
-msgid "Date"
-msgstr ""
-
-#: includes/Admin/Settings_Page.php:526
-msgid "Send orders"
-msgstr ""
-
-#: includes/Admin/Settings_Page.php:538
-msgid "Old manual webhooks"
-msgstr ""
-
-#: includes/Admin/Settings_Page.php:539
-msgid "Before this plugin, these WooCommerce webhooks sent your orders to Tassyir. The plugin now does it, so they are no longer needed (duplicates are ignored until you delete them)."
-msgstr ""
-
-#: includes/Admin/Settings_Page.php:544
-msgid "Delete them"
-msgstr ""
-
-#: includes/Admin/Settings_Page.php:544
-msgid "Delete these webhooks permanently?"
-msgstr ""
-
-#: includes/Admin/Settings_Page.php:553
-msgid "Recent problems"
-msgstr ""
-
-#: includes/Admin/Settings_Page.php:555
-msgid "No problems."
-msgstr ""
-
-#: includes/Admin/Settings_Page.php:559
-msgid "When"
-msgstr ""
-
-#: includes/Admin/Settings_Page.php:560
-msgid "What"
-msgstr ""
-
-#: includes/Admin/Settings_Page.php:561
-msgid "Problem"
-msgstr ""
-
-#: includes/Admin/Settings_Page.php:583
-msgid "Clear"
-msgstr ""
-
-#: includes/Cod/Order_Creator.php:120
-msgid "Cash on delivery"
-msgstr ""
-
-#: includes/Cod/Order_Creator.php:149
+#: includes/Cod/Order_Creator.php:107
 msgid "Tassyir flagged this order as suspicious: check it before shipping."
 msgstr ""
 
 #. translators: %s: second phone number.
-#: includes/Cod/Order_Creator.php:153
+#: includes/Cod/Order_Creator.php:111
 #, php-format
 msgid "Second phone: %s"
 msgstr ""
 
-#: includes/Cod/Order_Creator.php:162
+#: includes/Cod/Order_Creator.php:120
 msgid "Order placed with the Tassyir COD form."
+msgstr ""
+
+#: includes/Cod/Order_Creator.php:175
+msgid "Cash on delivery"
 msgstr ""
 
 #: includes/Cod/Placement.php:94

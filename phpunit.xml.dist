@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!-- Unit tests (pure PHP, no WordPress): vendor/bin/phpunit -->
+<phpunit bootstrap="tests/bootstrap-unit.php" colors="true" beStrictAboutOutputDuringTests="true">
+	<testsuites>
+		<testsuite name="unit">
+			<directory suffix="Test.php">tests/unit</directory>
+		</testsuite>
+	</testsuites>
+</phpunit>

@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "tassyir/cod-form",
+	"version": "1.0.0",
+	"title": "Tassyir COD form",
+	"category": "woocommerce",
+	"icon": "cart",
+	"description": "Cash-on-delivery order form: wilaya, commune, home or desk delivery and Tassyir's live fees.",
+	"keywords": [ "cod", "order", "tassyir", "checkout" ],
+	"textdomain": "tassyir-for-woocommerce",
+	"attributes": {
+		"productId": {
+			"type": "number",
+			"default": 0
+		}
+	},
+	"supports": {
+		"html": false,
+		"multiple": true
+	},
+	"editorScript": "file:./editor.js",
+	"editorStyle": "file:../../css/cod-form.css"
+}

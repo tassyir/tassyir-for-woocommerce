@@ -1,0 +1,10 @@
+/* Tassyir settings page. Logical properties (inline-start/end) keep Arabic RTL correct. */
+.tassyir-settings .card { max-width: 760px; }
+.tassyir-settings .tassyir-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-block: 12px; }
+.tassyir-settings .tassyir-actions form { margin: 0; }
+.tassyir-settings .tassyir-connect { padding-block: 8px 16px; }
+.tassyir-settings .tassyir-online { color: #008a20; font-weight: 600; }
+.tassyir-settings .tassyir-offline { color: #b32d2e; font-weight: 600; }
+.tassyir-settings ul.tassyir-shared { list-style: disc; padding-inline-start: 20px; }
+.tassyir-settings table.widefat { max-width: 960px; }
+.tassyir-settings code { direction: ltr; unicode-bidi: embed; }

@@ -1,0 +1,83 @@
+{
+	"name": "tassyir/tassyir-for-woocommerce",
+	"description": "Send your WooCommerce orders and products to Tassyir.",
+	"type": "wordpress-plugin",
+	"license": "GPL-2.0-or-later",
+	"require": {
+		"php": ">=7.4",
+		"yahnis-elsts/plugin-update-checker": "5.7.*"
+	},
+	"require-dev": {
+		"dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+		"php-stubs/woocommerce-stubs": "^10.0",
+		"phpcompatibility/phpcompatibility-wp": "^2.1",
+		"phpstan/extension-installer": "^1.4",
+		"phpstan/phpstan": "^2.1",
+		"phpunit/phpunit": "^9.6",
+		"szepeviktor/phpstan-wordpress": "^2.0",
+		"wp-coding-standards/wpcs": "^3.1",
+		"yoast/phpunit-polyfills": "^2.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"Tassyir\\WooCommerce\\": "includes/"
+		},
+		"files": [
+			"includes/self-update.php"
+		]
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Tassyir\\WooCommerce\\Tests\\": "tests/"
+		}
+	},
+	"config": {
+		"platform": {
+			"php": "7.4.33"
+		},
+		"platform-check": false,
+		"sort-packages": true,
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true,
+			"phpstan/extension-installer": true
+		}
+	},
+	"extra": {
+		"strauss": {
+			"target_directory": "vendor-prefixed",
+			"namespace_prefix": "Tassyir\\WooCommerce\\Vendor\\",
+			"classmap_prefix": "Tassyir_WooCommerce_Vendor_",
+			"constant_prefix": "TASSYIR_WC_VENDOR_",
+			"packages": [
+				"yahnis-elsts/plugin-update-checker"
+			],
+			"delete_vendor_packages": true,
+			"override_autoload": {
+				"yahnis-elsts/plugin-update-checker": {
+					"files": [
+						"load-v5p7.php"
+					],
+					"classmap": [
+						"Puc/"
+					]
+				}
+			}
+		}
+	},
+	"scripts": {
+		"prefix-namespaces": [
+			"@php -r \"is_dir('bin') || mkdir('bin'); file_exists('bin/strauss.phar') || (copy('https://github.com/BrianHenryIE/strauss/releases/download/0.31.1/strauss.phar', 'bin/strauss.tmp') && rename('bin/strauss.tmp', 'bin/strauss.phar'));\"",
+			"@php bin/strauss.phar",
+			"@composer dump-autoload"
+		],
+		"post-install-cmd": [
+			"@prefix-namespaces"
+		],
+		"post-update-cmd": [
+			"@prefix-namespaces"
+		],
+		"lint": "phpcs",
+		"analyse": "phpstan analyse --memory-limit=1G",
+		"test:unit": "phpunit --testsuite unit"
+	}
+}

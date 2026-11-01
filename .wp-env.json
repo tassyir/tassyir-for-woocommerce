@@ -1,0 +1,20 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/wp-env.json",
+  "core": "https://wordpress.org/wordpress-7.1.4.zip",
+  "phpVersion": "8.3",
+  "port": 8890,
+  "testsPort": 8891,
+  "plugins": [],
+  "mappings": {
+    "wp-content/plugins/woocommerce": "https://downloads.wordpress.org/plugin/woocommerce.latest-stable.zip",
+    "wp-content/plugins/tassyir-for-woocommerce": "."
+  },
+  "env": {
+    "development": {
+      "config": {
+        "TASSYIR_API_URL": "http://host.docker.internal:8787",
+        "TASSYIR_APP_URL": "http://localhost:8787"
+      }
+    }
+  }
+}

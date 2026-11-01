@@ -1,0 +1,15 @@
+parameters:
+	level: 6
+	paths:
+		- tassyir-for-woocommerce.php
+		- uninstall.php
+		- includes/
+	bootstrapFiles:
+		- tests/phpstan-bootstrap.php
+	scanFiles:
+		- vendor/php-stubs/woocommerce-stubs/woocommerce-stubs.php
+		- vendor/php-stubs/woocommerce-stubs/woocommerce-packages-stubs.php
+	dynamicConstantNames:
+		- WC_VERSION
+		- TASSYIR_WC_VERSION
+		- DISABLE_WP_CRON

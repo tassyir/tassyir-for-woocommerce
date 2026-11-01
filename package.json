@@ -1,0 +1,12 @@
+{
+  "name": "tassyir-for-woocommerce",
+  "private": true,
+  "description": "Dev tooling only (wp-env, stub server). Nothing here ships in the plugin zip.",
+  "scripts": {
+    "env": "wp-env",
+    "stub": "node tests/stub/server.js"
+  },
+  "devDependencies": {
+    "@wordpress/env": "^12.0.0"
+  }
+}

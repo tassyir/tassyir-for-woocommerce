@@ -1,0 +1,898 @@
+# Copyright (C) 2026 Tassyir
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Tassyir for WooCommerce 1.0.0\n"
+"Report-Msgid-Bugs-To: https://tassyir.io\n"
+"Last-Translator: Tassyir\n"
+"Language-Team: French (France)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr_FR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"POT-Creation-Date: 2026-10-30T20:04:27+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: tassyir-for-woocommerce\n"
+
+#. Plugin Name of the plugin
+#: tassyir-for-woocommerce.php
+msgid "Tassyir for WooCommerce"
+msgstr ""
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+#: tassyir-for-woocommerce.php
+msgid "https://tassyir.io"
+msgstr ""
+
+#. Description of the plugin
+#: tassyir-for-woocommerce.php
+msgid "Send WooCommerce orders and products to Tassyir, with a cash-on-delivery order form. Every order is queued and retried until Tassyir confirms it."
+msgstr "Envoyez vos commandes et produits WooCommerce à Tassyir, avec un formulaire de commande paiement à la livraison. Chaque commande est mise en file et renvoyée jusqu’à ce que Tassyir la confirme."
+
+#. Author of the plugin
+#: tassyir-for-woocommerce.php
+msgid "Tassyir"
+msgstr ""
+
+#: includes/Admin/Cod_Settings_Page.php:37
+#: includes/Admin/Order_Admin.php:244
+#: includes/Admin/Settings_Page.php:168
+#: includes/Admin/Settings_Page.php:289
+msgid "Sorry, you are not allowed to do this."
+msgstr "Désolé, vous n’avez pas l’autorisation de faire cela."
+
+#: includes/Admin/Cod_Settings_Page.php:63
+msgid "The cash-on-delivery form creates a normal WooCommerce order, which is then sent to Tassyir like any other. Delivery fees, wilayas, communes and desks come from your Tassyir store and carrier, so they are not set here."
+msgstr "Le formulaire paiement à la livraison crée une commande WooCommerce normale, envoyée ensuite à Tassyir comme les autres. Frais de livraison, wilayas, communes et bureaux viennent de votre boutique Tassyir et de votre transporteur : ils ne se règlent pas ici."
+
+#. translators: 1: shortcode, 2: block name.
+#: includes/Admin/Cod_Settings_Page.php:66
+#, php-format
+msgid "Place it anywhere with the shortcode %1$s (also in Elementor's shortcode widget) or the \"%2$s\" block."
+msgstr "Placez-le où vous voulez avec le shortcode %1$s (aussi dans le widget shortcode d’Elementor) ou le bloc « %2$s »."
+
+#. translators: 1: shortcode, 2: block name.
+#: includes/Admin/Cod_Settings_Page.php:66
+msgid "Tassyir COD form"
+msgstr "Formulaire COD Tassyir"
+
+#: includes/Admin/Cod_Settings_Page.php:69
+msgid "Placement"
+msgstr "Emplacement"
+
+#: includes/Admin/Cod_Settings_Page.php:70
+msgid "Product pages"
+msgstr "Pages produit"
+
+#: includes/Admin/Cod_Settings_Page.php:70
+msgid "Show on every product page"
+msgstr "Afficher sur chaque page produit"
+
+#: includes/Admin/Cod_Settings_Page.php:73
+msgid "Add to cart"
+msgstr "Ajouter au panier"
+
+#: includes/Admin/Cod_Settings_Page.php:75
+msgid "Replace Add to cart with the form"
+msgstr "Remplacer « Ajouter au panier » par le formulaire"
+
+#: includes/Admin/Cod_Settings_Page.php:76
+msgid "Replace Add to cart, and hide the cart & checkout"
+msgstr "Remplacer « Ajouter au panier » et masquer le panier et la caisse"
+
+#: includes/Admin/Cod_Settings_Page.php:77
+msgid "Keep Add to cart under the form"
+msgstr "Garder « Ajouter au panier » sous le formulaire"
+
+#: includes/Admin/Cod_Settings_Page.php:83
+msgid "Fields"
+msgstr "Champs"
+
+#: includes/Admin/Cod_Settings_Page.php:85
+msgid "Quantity selector"
+msgstr "Sélecteur de quantité"
+
+#: includes/Admin/Cod_Settings_Page.php:86
+msgid "Second phone (optional for the customer)"
+msgstr "Deuxième téléphone (facultatif pour le client)"
+
+#: includes/Admin/Cod_Settings_Page.php:87
+#: includes/Admin/Cod_Settings_Page.php:259
+msgid "Address"
+msgstr "Adresse"
+
+#: includes/Admin/Cod_Settings_Page.php:88
+msgid "Address is required"
+msgstr "Adresse obligatoire"
+
+#: includes/Admin/Cod_Settings_Page.php:89
+#: includes/Admin/Cod_Settings_Page.php:260
+msgid "Note"
+msgstr "Remarque"
+
+#: includes/Admin/Cod_Settings_Page.php:90
+msgid "Icons in the fields"
+msgstr "Icônes dans les champs"
+
+#: includes/Admin/Cod_Settings_Page.php:91
+msgid "Desk delivery option (only where your carrier has a desk)"
+msgstr "Option livraison au bureau (seulement là où votre transporteur a un bureau)"
+
+#: includes/Admin/Cod_Settings_Page.php:92
+msgid "Quantity offers (from Tassyir)"
+msgstr "Offres de quantité (depuis Tassyir)"
+
+#: includes/Admin/Cod_Settings_Page.php:93
+msgid "Show the saving on offers"
+msgstr "Afficher l’économie sur les offres"
+
+#: includes/Admin/Cod_Settings_Page.php:96
+msgid "Show"
+msgstr "Afficher"
+
+#: includes/Admin/Cod_Settings_Page.php:100
+msgid "Language and texts"
+msgstr "Langue et textes"
+
+#: includes/Admin/Cod_Settings_Page.php:103
+msgid "Form language"
+msgstr "Langue du formulaire"
+
+#: includes/Admin/Cod_Settings_Page.php:105
+msgid "The site language (Arabic otherwise)"
+msgstr "La langue du site (sinon l’arabe)"
+
+#: includes/Admin/Cod_Settings_Page.php:114
+msgid "Text direction"
+msgstr "Sens du texte"
+
+#: includes/Admin/Cod_Settings_Page.php:116
+msgid "From the language"
+msgstr "Selon la langue"
+
+#: includes/Admin/Cod_Settings_Page.php:117
+msgid "Right to left"
+msgstr "De droite à gauche"
+
+#: includes/Admin/Cod_Settings_Page.php:118
+msgid "Left to right"
+msgstr "De gauche à droite"
+
+#: includes/Admin/Cod_Settings_Page.php:123
+msgid "Leave a text empty to keep the default shown in grey."
+msgstr "Laissez un texte vide pour garder celui affiché en gris."
+
+#: includes/Admin/Cod_Settings_Page.php:148
+msgid "Colours"
+msgstr "Couleurs"
+
+#: includes/Admin/Cod_Settings_Page.php:150
+msgid "Main colour (button, selection)"
+msgstr "Couleur principale (bouton, sélection)"
+
+#: includes/Admin/Cod_Settings_Page.php:151
+msgid "Button text"
+msgstr "Texte du bouton"
+
+#: includes/Admin/Cod_Settings_Page.php:152
+msgid "Background"
+msgstr "Fond"
+
+#: includes/Admin/Cod_Settings_Page.php:153
+msgid "Text"
+msgstr "Texte"
+
+#: includes/Admin/Cod_Settings_Page.php:154
+msgid "Borders"
+msgstr "Bordures"
+
+#: includes/Admin/Cod_Settings_Page.php:166
+msgid "Corner radius"
+msgstr "Arrondi des angles"
+
+#: includes/Admin/Cod_Settings_Page.php:171
+msgid "After the order"
+msgstr "Après la commande"
+
+#: includes/Admin/Cod_Settings_Page.php:174
+msgid "The customer sees"
+msgstr "Le client voit"
+
+#: includes/Admin/Cod_Settings_Page.php:176
+msgid "WooCommerce's order received page"
+msgstr "La page « Commande reçue » de WooCommerce"
+
+#: includes/Admin/Cod_Settings_Page.php:177
+msgid "My own page (URL below)"
+msgstr "Ma propre page (URL ci-dessous)"
+
+#: includes/Admin/Cod_Settings_Page.php:178
+msgid "A message on the form"
+msgstr "Un message sur le formulaire"
+
+#: includes/Admin/Cod_Settings_Page.php:184
+msgid "Thank-you page URL"
+msgstr "URL de la page de remerciement"
+
+#: includes/Admin/Cod_Settings_Page.php:186
+msgid "Order number and total are added as ?order=&total=. Orders Tassyir holds as possible spam get no WooCommerce order: with the order received page they see the message on the form instead."
+msgstr "Le numéro de commande et le total sont ajoutés en ?order=&total=. Les commandes que Tassyir retient comme spam possible ne créent pas de commande WooCommerce : avec la page « Commande reçue », ces clients voient le message du formulaire à la place."
+
+#: includes/Admin/Cod_Settings_Page.php:190
+msgid "Spam protection"
+msgstr "Protection anti-spam"
+
+#: includes/Admin/Cod_Settings_Page.php:191
+msgid "Tassyir checks every order before it exists (honeypot, phone and device limits, your spam rules). Behind Cloudflare, every visitor reaches your server from a Cloudflare address: tick this so Tassyir uses the visitor's real address instead (it checks that the request really came through Cloudflare)."
+msgstr "Tassyir vérifie chaque commande avant qu’elle existe (piège à robots, limites par téléphone et par appareil, vos règles anti-spam). Derrière Cloudflare, chaque visiteur arrive sur votre serveur depuis une adresse Cloudflare : cochez ceci pour que Tassyir utilise la vraie adresse du visiteur (il vérifie que la requête est bien passée par Cloudflare)."
+
+#: includes/Admin/Cod_Settings_Page.php:193
+msgid "Cloudflare"
+msgstr "Cloudflare"
+
+#: includes/Admin/Cod_Settings_Page.php:193
+msgid "My site is behind Cloudflare"
+msgstr "Mon site est derrière Cloudflare"
+
+#: includes/Admin/Cod_Settings_Page.php:196
+msgid "Pixels"
+msgstr "Pixels"
+
+#: includes/Admin/Cod_Settings_Page.php:197
+msgid "Sends Purchase with Tassyir's event id, so it deduplicates with Tassyir's server-side events. The pixel itself must already be on your site."
+msgstr "Envoie Purchase avec l’identifiant d’événement de Tassyir, pour qu’il soit dédoublonné avec les événements serveur de Tassyir. Le pixel lui-même doit déjà être sur votre site."
+
+#: includes/Admin/Cod_Settings_Page.php:199
+msgid "PixelYourSite is active and already sends Purchase from the order received page: keep these off to avoid counting each order twice."
+msgstr "PixelYourSite est actif et envoie déjà Purchase depuis la page « Commande reçue » : laissez ces options désactivées pour ne pas compter chaque commande deux fois."
+
+#: includes/Admin/Cod_Settings_Page.php:202
+msgid "Meta Pixel"
+msgstr "Pixel Meta"
+
+#: includes/Admin/Cod_Settings_Page.php:202
+msgid "Send Purchase"
+msgstr "Envoyer Purchase"
+
+#: includes/Admin/Cod_Settings_Page.php:203
+msgid "TikTok Pixel"
+msgstr "Pixel TikTok"
+
+#: includes/Admin/Cod_Settings_Page.php:203
+msgid "Send CompletePayment"
+msgstr "Envoyer CompletePayment"
+
+#: includes/Admin/Cod_Settings_Page.php:206
+msgid "Save changes"
+msgstr "Enregistrer les modifications"
+
+#: includes/Admin/Cod_Settings_Page.php:251
+msgid "Heading"
+msgstr "Titre"
+
+#: includes/Admin/Cod_Settings_Page.php:252
+msgid "Button"
+msgstr "Bouton"
+
+#: includes/Admin/Cod_Settings_Page.php:253
+msgid "Success message"
+msgstr "Message de succès"
+
+#: includes/Admin/Cod_Settings_Page.php:254
+msgid "Name"
+msgstr "Nom"
+
+#: includes/Admin/Cod_Settings_Page.php:255
+msgid "Phone"
+msgstr "Téléphone"
+
+#: includes/Admin/Cod_Settings_Page.php:256
+msgid "Second phone"
+msgstr "Deuxième téléphone"
+
+#: includes/Admin/Cod_Settings_Page.php:257
+msgid "Wilaya"
+msgstr "Wilaya"
+
+#: includes/Admin/Cod_Settings_Page.php:258
+msgid "Commune"
+msgstr "Commune"
+
+#: includes/Admin/Cod_Settings_Page.php:261
+msgid "Home delivery"
+msgstr "Livraison à domicile"
+
+#: includes/Admin/Cod_Settings_Page.php:262
+msgid "Desk delivery"
+msgstr "Livraison au bureau"
+
+#: includes/Admin/Cod_Settings_Page.php:263
+msgid "Offers heading"
+msgstr "Titre des offres"
+
+#: includes/Admin/Cod_Settings_Page.php:264
+msgid "Under the total"
+msgstr "Sous le total"
+
+#: includes/Admin/Labels.php:27
+msgid "Order status is not imported (see your Tassyir settings)"
+msgstr "Ce statut de commande n’est pas importé (voir vos réglages Tassyir)"
+
+#: includes/Admin/Labels.php:28
+msgid "Order is older than the connection"
+msgstr "La commande est antérieure à la connexion"
+
+#: includes/Admin/Labels.php:29
+msgid "A product is not linked to a Tassyir product"
+msgstr "Un produit n’est lié à aucun produit Tassyir"
+
+#: includes/Admin/Labels.php:30
+msgid "Order has no products"
+msgstr "La commande ne contient aucun produit"
+
+#: includes/Admin/Labels.php:31
+msgid "No active store in Tassyir"
+msgstr "Aucune boutique active dans Tassyir"
+
+#: includes/Admin/Labels.php:32
+msgid "Tassyir order limit reached"
+msgstr "Limite de commandes Tassyir atteinte"
+
+#: includes/Admin/Labels.php:33
+msgid "Tassyir could not read this order"
+msgstr "Tassyir n’a pas pu lire cette commande"
+
+#: includes/Admin/Labels.php:34
+msgid "Tassyir is already processing this order"
+msgstr "Tassyir traite déjà cette commande"
+
+#: includes/Admin/Labels.php:35
+#: includes/Admin/Labels.php:50
+msgid "Waiting: too many requests"
+msgstr "En attente : trop de requêtes"
+
+#: includes/Admin/Labels.php:36
+msgid "Temporary error in Tassyir, will retry"
+msgstr "Erreur temporaire chez Tassyir, nouvel essai prévu"
+
+#: includes/Admin/Labels.php:37
+msgid "Tassyir could not import it"
+msgstr "Tassyir n’a pas pu l’importer"
+
+#: includes/Admin/Labels.php:38
+msgid "The order could not be read in WooCommerce"
+msgstr "La commande n’a pas pu être lue dans WooCommerce"
+
+#: includes/Admin/Labels.php:40
+msgid "Could not reach Tassyir (network or host firewall)"
+msgstr "Impossible de joindre Tassyir (réseau ou pare-feu de l’hébergeur)"
+
+#: includes/Admin/Labels.php:41
+msgid "Your server clock is wrong, so Tassyir refuses the requests"
+msgstr "L’horloge de votre serveur est fausse, Tassyir refuse donc les requêtes"
+
+#: includes/Admin/Labels.php:42
+msgid "Not connected to Tassyir"
+msgstr "Non connecté à Tassyir"
+
+#: includes/Admin/Labels.php:43
+msgid "Tassyir refused the connection: please reconnect"
+msgstr "Tassyir a refusé la connexion : veuillez reconnecter"
+
+#: includes/Admin/Labels.php:44
+msgid "This site is connected to Tassyir another way: please reconnect"
+msgstr "Ce site est connecté à Tassyir d’une autre manière : veuillez reconnecter"
+
+#: includes/Admin/Labels.php:45
+msgid "This plugin version is too old: please update it"
+msgstr "Cette version de l’extension est trop ancienne : veuillez la mettre à jour"
+
+#: includes/Admin/Labels.php:46
+msgid "Tassyir is temporarily unavailable, will retry"
+msgstr "Tassyir est temporairement indisponible, nouvel essai prévu"
+
+#: includes/Admin/Labels.php:47
+msgid "Tassyir could not read the data sent"
+msgstr "Tassyir n’a pas pu lire les données envoyées"
+
+#: includes/Admin/Labels.php:48
+#: includes/Admin/Labels.php:49
+msgid "Too large for Tassyir"
+msgstr "Trop volumineux pour Tassyir"
+
+#: includes/Admin/Labels.php:51
+msgid "This site is already linked to another Tassyir business. Disconnect it there first, or contact Tassyir support."
+msgstr "Ce site est déjà lié à une autre entreprise Tassyir. Déconnectez-le d’abord de celle-ci, ou contactez le support Tassyir."
+
+#: includes/Admin/Labels.php:52
+msgid "The connection link is invalid or was already used. Please try again."
+msgstr "Le lien de connexion est invalide ou a déjà été utilisé. Veuillez réessayer."
+
+#: includes/Admin/Labels.php:53
+msgid "The connection link expired. Please try again."
+msgstr "Le lien de connexion a expiré. Veuillez réessayer."
+
+#: includes/Admin/Labels.php:54
+msgid "The connection attempt could not be verified (it expired or was started by another user). Please try again."
+msgstr "La tentative de connexion n’a pas pu être vérifiée (expirée ou lancée par un autre utilisateur). Veuillez réessayer."
+
+#: includes/Admin/Labels.php:55
+msgid "Connection cancelled."
+msgstr "Connexion annulée."
+
+#: includes/Admin/Labels.php:56
+msgid "Your site address and your WordPress admin address differ (domain, http/https or port), so Tassyir cannot connect. Make them match (Settings → General) and try again."
+msgstr "L’adresse de votre site et celle de l’administration WordPress diffèrent (domaine, http/https ou port), donc Tassyir ne peut pas se connecter. Rendez-les identiques (Réglages → Général) puis réessayez."
+
+#: includes/Admin/Labels.php:57
+msgid "Tassyir sent an unexpected answer. Please try again."
+msgstr "Tassyir a renvoyé une réponse inattendue. Veuillez réessayer."
+
+#: includes/Admin/Labels.php:59
+msgid "Tassyir refused the image (type or size)"
+msgstr "Tassyir a refusé l’image (type ou taille)"
+
+#: includes/Admin/Labels.php:60
+msgid "The product is not linked in Tassyir"
+msgstr "Le produit n’est pas lié dans Tassyir"
+
+#: includes/Admin/Labels.php:61
+msgid "Image type not supported (JPEG, PNG, WebP or GIF only)"
+msgstr "Type d’image non pris en charge (JPEG, PNG, WebP ou GIF uniquement)"
+
+#: includes/Admin/Labels.php:62
+msgid "Image larger than 10 MB"
+msgstr "Image de plus de 10 Mo"
+
+#: includes/Admin/Labels.php:63
+msgid "Image file missing on the server"
+msgstr "Fichier image absent du serveur"
+
+#: includes/Admin/Labels.php:64
+msgid "Image file could not be read"
+msgstr "Le fichier image n’a pas pu être lu"
+
+#. translators: %s: HTTP status code, e.g. 503.
+#: includes/Admin/Labels.php:72
+#, php-format
+msgid "Tassyir error (HTTP %s)"
+msgstr "Erreur Tassyir (HTTP %s)"
+
+#: includes/Admin/Labels.php:85
+msgid "Queued"
+msgstr "En attente"
+
+#: includes/Admin/Labels.php:87
+msgid "Sent"
+msgstr "Envoyée"
+
+#: includes/Admin/Labels.php:89
+msgid "Skipped"
+msgstr "Ignorée"
+
+#: includes/Admin/Labels.php:91
+msgid "Failed"
+msgstr "Échec"
+
+#: includes/Admin/Labels.php:93
+msgid "Not sent"
+msgstr "Non envoyée"
+
+#: includes/Admin/Labels.php:105
+msgid "Order"
+msgstr "Commande"
+
+#: includes/Admin/Labels.php:108
+#: assets/blocks/cod-form/editor.js:26
+msgid "Product"
+msgstr "Produit"
+
+#: includes/Admin/Labels.php:110
+msgid "Image"
+msgstr "Image"
+
+#: includes/Admin/Labels.php:112
+msgid "Status check"
+msgstr "Vérification d’état"
+
+#: includes/Admin/Labels.php:114
+#: includes/Admin/Settings_Page.php:335
+#: includes/Admin/Settings_Page.php:411
+msgid "Connection"
+msgstr "Connexion"
+
+#: includes/Admin/Notices.php:50
+msgid "Tassyir for WooCommerce needs WooCommerce 8.0 or newer. Please install and activate WooCommerce; until then the plugin does nothing."
+msgstr "Tassyir for WooCommerce nécessite WooCommerce 8.0 ou plus récent. Installez et activez WooCommerce ; d’ici là, l’extension ne fait rien."
+
+#: includes/Admin/Notices.php:67
+msgid "Tassyir: this site must be reconnected. Orders are kept in the queue until then."
+msgstr "Tassyir : ce site doit être reconnecté. Les commandes restent en file d’attente d’ici là."
+
+#. translators: %s: minimum plugin version, e.g. 1.2.0.
+#: includes/Admin/Notices.php:70
+#, php-format
+msgid "Tassyir: please update the Tassyir for WooCommerce plugin to version %s or newer. Orders are kept in the queue until then."
+msgstr "Tassyir : veuillez mettre à jour l’extension Tassyir for WooCommerce en version %s ou plus récente. Les commandes restent en file d’attente d’ici là."
+
+#. translators: %s: clock difference, e.g. +600 s.
+#: includes/Admin/Notices.php:73
+#, php-format
+msgid "Tassyir: your server clock is wrong (%s), so Tassyir refuses its requests. Ask your host to fix the server time."
+msgstr "Tassyir : l’horloge de votre serveur est fausse (%s), Tassyir refuse donc ses requêtes. Demandez à votre hébergeur de corriger l’heure du serveur."
+
+#: includes/Admin/Notices.php:81
+msgid "Open Tassyir settings"
+msgstr "Ouvrir les réglages Tassyir"
+
+#. translators: %d: number of webhooks.
+#: includes/Admin/Notices.php:92
+#, php-format
+msgid "Tassyir: %d old manual WooCommerce webhook is no longer needed."
+msgid_plural "Tassyir: %d old manual WooCommerce webhooks are no longer needed."
+msgstr[0] "Tassyir : %d ancien webhook WooCommerce manuel n’est plus nécessaire."
+msgstr[1] "Tassyir : %d anciens webhooks WooCommerce manuels ne sont plus nécessaires."
+
+#: includes/Admin/Notices.php:97
+msgid "Review and delete them"
+msgstr "Les vérifier et les supprimer"
+
+#: includes/Admin/Onboarding.php:130
+msgid "Tassyir for WooCommerce is almost ready."
+msgstr "Tassyir for WooCommerce est presque prêt."
+
+#: includes/Admin/Onboarding.php:131
+msgid "Connect this store to start sending your orders to Tassyir."
+msgstr "Connectez cette boutique pour commencer à envoyer vos commandes à Tassyir."
+
+#: includes/Admin/Onboarding.php:133
+#: includes/Admin/Settings_Page.php:387
+msgid "Connect to Tassyir"
+msgstr "Connecter à Tassyir"
+
+#: includes/Admin/Onboarding.php:134
+msgid "Don’t show again"
+msgstr "Ne plus afficher"
+
+#. translators: %s: date and time.
+#: includes/Admin/Order_Admin.php:144
+#, php-format
+msgid "Sent on %s"
+msgstr "Envoyée le %s"
+
+#. translators: %d: number of attempts.
+#: includes/Admin/Order_Admin.php:149
+#, php-format
+msgid "%d attempt"
+msgid_plural "%d attempts"
+msgstr[0] "%d tentative"
+msgstr[1] "%d tentatives"
+
+#: includes/Admin/Order_Admin.php:162
+msgid "Send to Tassyir"
+msgstr "Envoyer à Tassyir"
+
+#. translators: %d: number of orders.
+#: includes/Admin/Order_Admin.php:196
+#, php-format
+msgid "%d order queued for Tassyir."
+msgid_plural "%d orders queued for Tassyir."
+msgstr[0] "%d commande mise en file pour Tassyir."
+msgstr[1] "%d commandes mises en file pour Tassyir."
+
+#: includes/Admin/Order_Admin.php:233
+msgid "Send to Tassyir again"
+msgstr "Renvoyer à Tassyir"
+
+#: includes/Admin/Privacy.php:39
+msgid "This store sends its orders and products to Tassyir (https://tassyir.io), the service the store uses to confirm and deliver orders. Nothing is sent before the store owner connects the store to Tassyir."
+msgstr "Cette boutique envoie ses commandes et ses produits à Tassyir (https://tassyir.io), le service qu’elle utilise pour confirmer et livrer les commandes. Rien n’est envoyé avant que le propriétaire de la boutique ne la connecte à Tassyir."
+
+#: includes/Admin/Privacy.php:40
+msgid "When you place an order, these details are sent to Tassyir: your name, phone number, email address, billing and shipping addresses, the products ordered, the totals, the payment method and your order note. They are sent again when the order status changes."
+msgstr "Quand vous passez commande, ces informations sont envoyées à Tassyir : votre nom, votre numéro de téléphone, votre adresse e-mail, vos adresses de facturation et de livraison, les produits commandés, les totaux, le moyen de paiement et votre note de commande. Elles sont renvoyées quand le statut de la commande change."
+
+#: includes/Admin/Privacy.php:41
+msgid "Tassyir also receives the store’s products and product photos, and technical information about the store (software versions and the size of the sending queue)."
+msgstr "Tassyir reçoit aussi les produits de la boutique et leurs photos, ainsi que des informations techniques sur la boutique (versions des logiciels et taille de la file d’envoi)."
+
+#: includes/Admin/Privacy.php:42
+msgid "When you order with the store’s cash-on-delivery form, Tassyir also receives your IP address, your browser’s user agent and a random device identifier stored in your browser (local storage and a cookie named tsy_device_id), used to price the order and protect the store against fake orders."
+msgstr "Quand vous commandez avec le formulaire paiement à la livraison de la boutique, Tassyir reçoit aussi votre adresse IP, l’agent utilisateur de votre navigateur et un identifiant d’appareil aléatoire conservé dans votre navigateur (stockage local et cookie nommé tsy_device_id), pour calculer le prix de la commande et protéger la boutique contre les fausses commandes."
+
+#. translators: %s: URL of Tassyir's privacy policy.
+#: includes/Admin/Privacy.php:44
+#, php-format
+msgid "Tassyir’s privacy policy: %s"
+msgstr "Politique de confidentialité de Tassyir : %s"
+
+#: includes/Admin/Settings_Page.php:136
+msgid "Settings"
+msgstr "Réglages"
+
+#: includes/Admin/Settings_Page.php:336
+msgid "Checkout form"
+msgstr "Formulaire de commande"
+
+#: includes/Admin/Settings_Page.php:362
+msgid "Connected to Tassyir. New orders are now sent automatically."
+msgstr "Connecté à Tassyir. Les nouvelles commandes sont désormais envoyées automatiquement."
+
+#: includes/Admin/Settings_Page.php:363
+msgid "Disconnected from Tassyir."
+msgstr "Déconnecté de Tassyir."
+
+#: includes/Admin/Settings_Page.php:364
+msgid "Product sync started. It runs in the background, 20 products at a time."
+msgstr "Synchronisation des produits lancée. Elle tourne en arrière-plan, 20 produits à la fois."
+
+#: includes/Admin/Settings_Page.php:365
+msgid "Orders are being queued in the background."
+msgstr "Les commandes sont mises en file d’attente en arrière-plan."
+
+#: includes/Admin/Settings_Page.php:366
+msgid "The old manual webhooks were deleted."
+msgstr "Les anciens webhooks manuels ont été supprimés."
+
+#: includes/Admin/Settings_Page.php:367
+msgid "The problems log was cleared."
+msgstr "Le journal des problèmes a été effacé."
+
+#: includes/Admin/Settings_Page.php:368
+msgid "Checkout form settings saved."
+msgstr "Réglages du formulaire de commande enregistrés."
+
+#: includes/Admin/Settings_Page.php:374
+msgid "Please choose a valid date."
+msgstr "Veuillez choisir une date valide."
+
+#: includes/Admin/Settings_Page.php:384
+msgid "Connect your store to Tassyir"
+msgstr "Connectez votre boutique à Tassyir"
+
+#: includes/Admin/Settings_Page.php:385
+msgid "One last step: connect this store to start sending your orders to Tassyir."
+msgstr "Dernière étape : connectez cette boutique pour commencer à envoyer vos commandes à Tassyir."
+
+#. translators: %s: Tassyir dashboard host, e.g. app.tassyir.io.
+#: includes/Admin/Settings_Page.php:391
+#, php-format
+msgid "You will choose your business and store on %s, then come back here."
+msgstr "Vous choisirez votre entreprise et votre boutique sur %s, puis reviendrez ici."
+
+#: includes/Admin/Settings_Page.php:393
+msgid "Once connected, this plugin sends to your Tassyir store:"
+msgstr "Une fois connectée, cette extension envoie à votre boutique Tassyir :"
+
+#: includes/Admin/Settings_Page.php:395
+msgid "Orders: every new order, kept in a queue and retried until Tassyir confirms it."
+msgstr "Commandes : chaque nouvelle commande, gardée en file d’attente et renvoyée jusqu’à confirmation par Tassyir."
+
+#: includes/Admin/Settings_Page.php:396
+msgid "Products: names, prices, SKUs, variations and product photos, so Tassyir can create them."
+msgstr "Produits : noms, prix, UGS, variations et photos, pour que Tassyir puisse les créer."
+
+#: includes/Admin/Settings_Page.php:397
+msgid "Store health: plugin, WordPress and WooCommerce versions, and the queue size."
+msgstr "État de la boutique : versions de l’extension, de WordPress et de WooCommerce, et taille de la file d’attente."
+
+#: includes/Admin/Settings_Page.php:413
+msgid "Business"
+msgstr "Entreprise"
+
+#: includes/Admin/Settings_Page.php:414
+msgid "Store"
+msgstr "Boutique"
+
+#: includes/Admin/Settings_Page.php:415
+msgid "Status"
+msgstr "État"
+
+#: includes/Admin/Settings_Page.php:417
+msgid "Orders queue"
+msgstr "File des commandes"
+
+#. translators: 1: orders waiting, 2: orders failed.
+#: includes/Admin/Settings_Page.php:421
+#, php-format
+msgid "%1$d waiting, %2$d failed"
+msgstr "%1$d en attente, %2$d en échec"
+
+#: includes/Admin/Settings_Page.php:429
+msgid "Last order sent"
+msgstr "Dernière commande envoyée"
+
+#: includes/Admin/Settings_Page.php:430
+msgid "None yet"
+msgstr "Aucune pour l’instant"
+
+#: includes/Admin/Settings_Page.php:432
+msgid "Products"
+msgstr "Produits"
+
+#: includes/Admin/Settings_Page.php:433
+msgid "Plugin version"
+msgstr "Version de l’extension"
+
+#: includes/Admin/Settings_Page.php:437
+msgid "Sync all products"
+msgstr "Synchroniser tous les produits"
+
+#: includes/Admin/Settings_Page.php:438
+msgid "Reconnect"
+msgstr "Reconnecter"
+
+#: includes/Admin/Settings_Page.php:439
+msgid "Disconnect"
+msgstr "Déconnecter"
+
+#: includes/Admin/Settings_Page.php:439
+msgid "Disconnect this site from Tassyir? Orders will stop being sent."
+msgstr "Déconnecter ce site de Tassyir ? Les commandes ne seront plus envoyées."
+
+#: includes/Admin/Settings_Page.php:447
+msgid "See every Tassyir job in Scheduled Actions"
+msgstr "Voir toutes les tâches Tassyir dans Actions planifiées"
+
+#: includes/Admin/Settings_Page.php:471
+msgid "Checking…"
+msgstr "Vérification…"
+
+#: includes/Admin/Settings_Page.php:474
+msgid "Online"
+msgstr "En ligne"
+
+#. translators: %s: time ago, e.g. 3 hours.
+#: includes/Admin/Settings_Page.php:477
+#, php-format
+msgid "Last seen %s ago"
+msgstr "Vu pour la dernière fois il y a %s"
+
+#: includes/Admin/Settings_Page.php:486
+msgid "Never synced. New and edited products are sent automatically."
+msgstr "Jamais synchronisé. Les produits nouveaux et modifiés sont envoyés automatiquement."
+
+#. translators: %d: number of products.
+#: includes/Admin/Settings_Page.php:491
+#, php-format
+msgid "Sync running: %d product sent so far."
+msgid_plural "Sync running: %d products sent so far."
+msgstr[0] "Synchronisation en cours : %d produit envoyé jusqu’ici."
+msgstr[1] "Synchronisation en cours : %d produits envoyés jusqu’ici."
+
+#. translators: 1: number of products, 2: date and time.
+#: includes/Admin/Settings_Page.php:495
+#, php-format
+msgid "%1$d product synced on %2$s."
+msgid_plural "%1$d products synced on %2$s."
+msgstr[0] "%1$d produit synchronisé le %2$s."
+msgstr[1] "%1$d produits synchronisés le %2$s."
+
+#. translators: 1: installed version, 2: latest version.
+#: includes/Admin/Settings_Page.php:508
+#, php-format
+msgid "%1$s (version %2$s is available)"
+msgstr "%1$s (la version %2$s est disponible)"
+
+#: includes/Admin/Settings_Page.php:519
+msgid "Send orders since…"
+msgstr "Envoyer les commandes depuis…"
+
+#: includes/Admin/Settings_Page.php:520
+msgid "Queues every order created since this date (90 days at most) that Tassyir has not received yet."
+msgstr "Met en file d’attente chaque commande créée depuis cette date (90 jours au maximum) que Tassyir n’a pas encore reçue."
+
+#: includes/Admin/Settings_Page.php:524
+msgid "Date"
+msgstr "Date"
+
+#: includes/Admin/Settings_Page.php:526
+msgid "Send orders"
+msgstr "Envoyer les commandes"
+
+#: includes/Admin/Settings_Page.php:538
+msgid "Old manual webhooks"
+msgstr "Anciens webhooks manuels"
+
+#: includes/Admin/Settings_Page.php:539
+msgid "Before this plugin, these WooCommerce webhooks sent your orders to Tassyir. The plugin now does it, so they are no longer needed (duplicates are ignored until you delete them)."
+msgstr "Avant cette extension, ces webhooks WooCommerce envoyaient vos commandes à Tassyir. L’extension s’en charge désormais, ils ne sont donc plus nécessaires (les doublons sont ignorés jusqu’à leur suppression)."
+
+#: includes/Admin/Settings_Page.php:544
+msgid "Delete them"
+msgstr "Les supprimer"
+
+#: includes/Admin/Settings_Page.php:544
+msgid "Delete these webhooks permanently?"
+msgstr "Supprimer définitivement ces webhooks ?"
+
+#: includes/Admin/Settings_Page.php:553
+msgid "Recent problems"
+msgstr "Problèmes récents"
+
+#: includes/Admin/Settings_Page.php:555
+msgid "No problems."
+msgstr "Aucun problème."
+
+#: includes/Admin/Settings_Page.php:559
+msgid "When"
+msgstr "Quand"
+
+#: includes/Admin/Settings_Page.php:560
+msgid "What"
+msgstr "Élément"
+
+#: includes/Admin/Settings_Page.php:561
+msgid "Problem"
+msgstr "Problème"
+
+#: includes/Admin/Settings_Page.php:583
+msgid "Clear"
+msgstr "Effacer"
+
+#: includes/Cod/Order_Creator.php:120
+msgid "Cash on delivery"
+msgstr "Paiement à la livraison"
+
+#: includes/Cod/Order_Creator.php:149
+msgid "Tassyir flagged this order as suspicious: check it before shipping."
+msgstr "Tassyir a signalé cette commande comme suspecte : vérifiez-la avant l’expédition."
+
+#. translators: %s: second phone number.
+#: includes/Cod/Order_Creator.php:153
+#, php-format
+msgid "Second phone: %s"
+msgstr "Deuxième téléphone : %s"
+
+#: includes/Cod/Order_Creator.php:162
+msgid "Order placed with the Tassyir COD form."
+msgstr "Commande passée avec le formulaire COD Tassyir."
+
+#: includes/Cod/Placement.php:94
+msgid "Tassyir COD form: choose a product (or place the block on a product page). The site must be connected to Tassyir."
+msgstr "Formulaire COD Tassyir : choisissez un produit (ou placez le bloc sur une page produit). Le site doit être connecté à Tassyir."
+
+#: tassyir-for-woocommerce.php:40
+msgid "Tassyir for WooCommerce is incomplete (missing vendor files). Please reinstall it from the zip downloaded from your Tassyir dashboard."
+msgstr "Tassyir for WooCommerce est incomplète (fichiers vendor manquants). Réinstallez-la depuis le zip téléchargé dans votre tableau de bord Tassyir."
+
+#: assets/blocks/cod-form/editor.js:28
+msgid "Product ID"
+msgstr "ID du produit"
+
+#: assets/blocks/cod-form/editor.js:29
+msgid "Leave empty on a product page: the form is for that product."
+msgstr "Laissez vide sur une page produit : le formulaire est pour ce produit."
+
+#: assets/blocks/cod-form/block.json
+msgctxt "block title"
+msgid "Tassyir COD form"
+msgstr "Formulaire COD Tassyir"
+
+#: assets/blocks/cod-form/block.json
+msgctxt "block description"
+msgid "Cash-on-delivery order form: wilaya, commune, home or desk delivery and Tassyir's live fees."
+msgstr "Formulaire de commande paiement à la livraison : wilaya, commune, livraison à domicile ou au bureau et frais Tassyir en direct."
+
+#: assets/blocks/cod-form/block.json
+msgctxt "block keyword"
+msgid "cod"
+msgstr "paiement à la livraison"
+
+#: assets/blocks/cod-form/block.json
+msgctxt "block keyword"
+msgid "order"
+msgstr "commande"
+
+#: assets/blocks/cod-form/block.json
+msgctxt "block keyword"
+msgid "tassyir"
+msgstr "tassyir"
+
+#: assets/blocks/cod-form/block.json
+msgctxt "block keyword"
+msgid "checkout"
+msgstr "caisse"

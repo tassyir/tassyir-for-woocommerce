@@ -1,0 +1,1128 @@
+/* Tassyir COD Form — all selectors scoped under .tsy-cod-form so it never
+   leaks into (or is clobbered by) the surrounding theme. Colors/radius come
+   from CSS custom properties set inline per block instance (theme editor
+   settings). Logical properties (margin-inline, inset-inline-start, ...) are
+   used throughout so both dir="rtl" and dir="ltr" render correctly without
+   duplicated rules. Styling mirrors the storefront's in-page-checkout
+   component ("default" style: flat card, no drop shadow). */
+
+.tsy-cod-form {
+  --tsy-primary: #111111;
+  --tsy-btn-text: #ffffff;
+  --tsy-bg: #ffffff;
+  --tsy-text: #111111;
+  --tsy-border: #ebebeb;
+  --tsy-radius: 8px;
+
+  /* Loaded by the block (see cod-form.liquid). The fallbacks matter: until
+     the webfont arrives, and on any storefront where it fails to load, the
+     stack has to stay legible for Arabic - hence Segoe UI / Tahoma / Arial
+     rather than a Latin-only list. */
+  --tsy-font: 'IBM Plex Sans Arabic', 'IBM Plex Sans', ui-sans-serif,
+    system-ui, -apple-system, 'Segoe UI', Tahoma, Arial, sans-serif;
+
+  /* Derived colors — plain fallback declared first (older browsers keep a
+     fixed approximation), color-mix refinement second. */
+  --tsy-muted: #666666;
+  --tsy-muted: color-mix(in srgb, var(--tsy-text) 55%, var(--tsy-bg));
+  --tsy-surface: #fafafa;
+  --tsy-surface: color-mix(in srgb, var(--tsy-text) 3%, var(--tsy-bg));
+
+  box-sizing: border-box;
+  max-width: 600px;
+  width: 100%;
+  margin-inline: auto;
+  background: var(--tsy-bg);
+  color: var(--tsy-text);
+  border: 1px solid var(--tsy-border);
+  border-radius: var(--tsy-radius);
+  padding: 24px 20px;
+  font-family: var(--tsy-font);
+  font-size: 1rem;
+  line-height: 1.4;
+  text-align: start;
+}
+
+.tsy-cod-form *,
+.tsy-cod-form *::before,
+.tsy-cod-form *::after {
+  box-sizing: border-box;
+}
+
+.tsy-cod-form [hidden] {
+  display: none !important;
+}
+
+/* Heading */
+
+.tsy-cod-form .tsy-cod-heading {
+  margin: 0 0 1.2rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  text-align: start;
+  color: var(--tsy-text);
+}
+
+.tsy-cod-form .tsy-cod-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tsy-cod-form .tsy-field {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Wilaya + commune side by side (stacks under 360px — the storefront keeps
+   them side-by-side on phones). */
+
+.tsy-cod-form .tsy-row-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+@media (max-width: 360px) {
+  .tsy-cod-form .tsy-row-2col {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tsy-cod-form .tsy-field label {
+  font-size: 12px;
+  font-weight: 600;
+  margin-block-end: 5px;
+  color: var(--tsy-muted);
+}
+
+/* Required asterisk / optional tag suffix on field labels. */
+
+.tsy-cod-form .tsy-req {
+  color: var(--tsy-primary);
+  font-weight: 600;
+}
+
+.tsy-cod-form .tsy-optional {
+  font-weight: 400;
+  color: var(--tsy-muted);
+}
+
+.tsy-cod-form .tsy-field input[type='text'],
+.tsy-cod-form .tsy-field input[type='tel'],
+.tsy-cod-form .tsy-field input[type='number'],
+.tsy-cod-form .tsy-field select,
+.tsy-cod-form .tsy-field textarea {
+  width: 100%;
+  max-width: 100%;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--tsy-text);
+  background: var(--tsy-bg);
+  border: 1px solid var(--tsy-border);
+  border-radius: var(--tsy-radius);
+  padding: 11px 14px;
+  text-align: start;
+  transition: border-color 0.15s ease;
+}
+
+/* iOS Safari auto-zooms on focus of any input under 16px — only force it on
+   coarse-pointer (touch) devices, keep the storefront's 13px everywhere else. */
+@media (pointer: coarse) {
+  .tsy-cod-form .tsy-field input[type='text'],
+  .tsy-cod-form .tsy-field input[type='tel'],
+  .tsy-cod-form .tsy-field input[type='number'],
+  .tsy-cod-form .tsy-field select,
+  .tsy-cod-form .tsy-field textarea {
+    font-size: 16px;
+  }
+}
+
+.tsy-cod-form .tsy-field textarea {
+  min-height: 4.5rem;
+  resize: vertical;
+}
+
+/* Input icons (name / phone / wilaya / commune) — small muted inline SVGs
+   inset at the input's leading edge, RTL-safe via logical properties. */
+
+.tsy-cod-form .tsy-input-holder {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.tsy-cod-form .tsy-input-icon {
+  position: absolute;
+  inset-inline-start: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  color: var(--tsy-muted);
+  pointer-events: none;
+}
+
+.tsy-cod-form .tsy-input-icon svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
+.tsy-cod-form .tsy-field input.tsy-has-icon,
+.tsy-cod-form .tsy-field select.tsy-has-icon {
+  padding-inline-start: 38px;
+}
+
+.tsy-cod-form .tsy-field input:focus,
+.tsy-cod-form .tsy-field select:focus,
+.tsy-cod-form .tsy-field textarea:focus {
+  outline: none;
+  border-color: var(--tsy-primary);
+}
+
+.tsy-cod-form .tsy-field select:disabled,
+.tsy-cod-form .tsy-field input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Phone hint */
+
+.tsy-cod-form .tsy-phone-hint {
+  margin: 5px 0 0;
+  font-size: 11px;
+  color: var(--tsy-muted);
+}
+
+/* Variant option pills — one group per product option (size, color, ...),
+   mirrors the storefront product page's pill selectors. Replaces the old
+   flat <select data-tsy-variant> for multi-variant products. */
+
+.tsy-cod-form .tsy-variant-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tsy-cod-form .tsy-variant-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.tsy-cod-form .tsy-variant-group-label {
+  font-size: 12px;
+  font-weight: 600;
+  margin-block-end: 5px;
+  color: var(--tsy-muted);
+}
+
+.tsy-cod-form .tsy-variant-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tsy-cod-form .tsy-variant-pill {
+  appearance: none;
+  font-family: inherit;
+  background: var(--tsy-bg);
+  color: var(--tsy-text);
+  border: 1px solid var(--tsy-border);
+  padding: 9px 16px;
+  border-radius: calc(var(--tsy-radius) * 0.6);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease,
+    opacity 0.15s ease;
+}
+
+.tsy-cod-form .tsy-variant-pill.is-selected {
+  background: var(--tsy-primary);
+  color: var(--tsy-btn-text);
+  border-color: var(--tsy-primary);
+}
+
+.tsy-cod-form .tsy-variant-pill.is-unavailable {
+  opacity: 0.45;
+}
+
+.tsy-cod-form .tsy-variant-pill:focus-visible {
+  outline: 2px solid var(--tsy-primary);
+  outline-offset: 2px;
+}
+
+/* Quantity stepper */
+
+.tsy-cod-form .tsy-qty-stepper {
+  display: inline-flex;
+  align-items: stretch;
+  width: fit-content;
+  border: 1px solid var(--tsy-border);
+  border-radius: var(--tsy-radius);
+  overflow: hidden;
+  background: var(--tsy-bg);
+}
+
+.tsy-cod-form .tsy-qty-btn {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: var(--tsy-text);
+  font-size: 1.1rem;
+  line-height: 1;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.tsy-cod-form .tsy-qty-btn:hover {
+  background: var(--tsy-surface);
+}
+
+.tsy-cod-form .tsy-qty-btn:active {
+  filter: brightness(0.95);
+}
+
+.tsy-cod-form .tsy-qty-stepper input[type='number'] {
+  width: auto;
+  min-width: 2.75rem;
+  height: 36px;
+  border: none;
+  border-inline: 1px solid var(--tsy-border);
+  border-radius: 0;
+  text-align: center;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 600;
+  -moz-appearance: textfield;
+}
+
+.tsy-cod-form .tsy-qty-stepper input[type='number']:focus {
+  border-color: var(--tsy-border);
+}
+
+.tsy-cod-form .tsy-qty-stepper input[type='number']::-webkit-outer-spin-button,
+.tsy-cod-form .tsy-qty-stepper input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Quantity offers (bundles) — rendered client-side once product-fields
+   resolves an active bundle. Cards stack vertically (8px gap); replaces the
+   quantity stepper entirely while active (storefront in-page-checkout
+   parity: no strikethrough, no savings badge, no "no offer" option). */
+
+.tsy-cod-form .tsy-bundle-label {
+  font-size: 12px;
+  font-weight: 600;
+  margin-block-end: 5px;
+  color: var(--tsy-muted);
+}
+
+.tsy-cod-form .tsy-bundle-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tsy-cod-form .tsy-bundle-option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1px solid var(--tsy-border);
+  border-radius: var(--tsy-radius);
+  background: var(--tsy-bg);
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.tsy-cod-form .tsy-bundle-option.is-selected {
+  border-color: var(--tsy-primary);
+  background: var(--tsy-surface);
+  box-shadow: 0 2px 8px var(--tsy-border);
+}
+
+/* The native radio is an invisible full-card overlay; the visible control is
+   .tsy-bundle-radio-circle. Matched on the ELEMENT, not just the class: the
+   JS renders this input with only a data-attribute hook and no class, so the
+   class-only selector never applied and every offer card showed two radios -
+   the real one plus the styled circle. */
+.tsy-cod-form .tsy-bundle-option input[type='radio'],
+.tsy-cod-form .tsy-bundle-radio {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.tsy-cod-form .tsy-bundle-radio-circle {
+  position: relative;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--tsy-border);
+  border-radius: 50%;
+}
+
+.tsy-cod-form .tsy-bundle-option.is-selected .tsy-bundle-radio-circle {
+  border-color: var(--tsy-primary);
+}
+
+.tsy-cod-form .tsy-bundle-option.is-selected .tsy-bundle-radio-circle::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: var(--tsy-primary);
+}
+
+.tsy-cod-form .tsy-bundle-option-main {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+}
+
+.tsy-cod-form .tsy-bundle-savings {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--tsy-primary);
+  background: var(--tsy-surface);
+  background: color-mix(in srgb, var(--tsy-primary) 12%, transparent);
+  padding: 1px 8px;
+  border-radius: 12px;
+}
+
+.tsy-cod-form .tsy-bundle-free-shipping {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--tsy-primary);
+  background: var(--tsy-surface);
+  background: color-mix(in srgb, var(--tsy-primary) 12%, transparent);
+  padding: 1px 8px;
+  border-radius: 12px;
+}
+
+.tsy-cod-form .tsy-summary-row-value.tsy-is-free-shipping {
+  color: var(--tsy-primary);
+  font-weight: 600;
+}
+
+.tsy-cod-form .tsy-bundle-price-col {
+  flex-shrink: 0;
+  margin-inline-start: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1px;
+}
+
+.tsy-cod-form .tsy-bundle-option-original {
+  font-size: 12px;
+  color: var(--tsy-muted);
+  text-decoration: line-through;
+}
+
+.tsy-cod-form .tsy-bundle-option-title {
+  min-width: 0;
+  max-width: 100%;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--tsy-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tsy-cod-form .tsy-bundle-option.is-selected .tsy-bundle-option-title {
+  color: var(--tsy-text);
+}
+
+.tsy-cod-form .tsy-bundle-option-price {
+  flex-shrink: 0;
+  margin-inline-start: auto;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--tsy-primary);
+}
+
+/* Per-unit variant pickers — one block per unit in the selected tier's
+   quantity (including a single unit), rendered for any multi-variant
+   product with real options. Each block reuses the .tsy-variant-* pill
+   markup/CSS from the main variant option pills above; only the slot
+   wrapper and its heading-to-pills spacing are new here. */
+
+.tsy-cod-form .tsy-bundle-slots {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-block-start: 12px;
+}
+
+.tsy-cod-form .tsy-bundle-slot-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Selected bundle option title under the product name in the summary —
+   primary color/600, distinct from the muted plain variant subtitle. */
+
+.tsy-cod-form .tsy-summary-item-variant.tsy-is-bundle-option {
+  font-weight: 600;
+  color: var(--tsy-primary);
+}
+
+/* Delivery type — segmented control */
+
+/* Segmented delivery-type control. Mirrors the storefront in-page checkout
+   (components/store/sections/in-page-checkout-section.tsx), where each pill
+   is BOTH the flex item and its own flex container. Here the item (.tsy-segment)
+   and the centering container (.tsy-segment-inner) are two different elements,
+   so the sizing rules that come free over there have to be spelled out. */
+.tsy-cod-form .tsy-segmented {
+  display: flex;
+  width: 100%;
+  background: var(--tsy-surface);
+  padding: 4px;
+  border-radius: var(--tsy-radius);
+  border: 1px solid var(--tsy-border);
+  gap: 4px;
+}
+
+.tsy-cod-form .tsy-segment {
+  position: relative;
+  display: block;
+  flex: 1 1 0;
+  /* Flex items default to min-width:auto, i.e. they refuse to shrink below
+     their own content. With flex-basis 0 that makes the pills size to their
+     LABELS instead of splitting the track evenly, so "توصيل للمنزل" and a
+     shorter desk label came out unequal and never filled the row. */
+  min-width: 0;
+  cursor: pointer;
+}
+
+.tsy-cod-form .tsy-segment input[type='radio'] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.tsy-cod-form .tsy-segment input[type='radio']:disabled {
+  cursor: not-allowed;
+}
+
+.tsy-cod-form .tsy-segment-icon {
+  flex-shrink: 0;
+}
+
+.tsy-cod-form .tsy-segment-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Fill the whole segment so the pill spans its share of the track rather
+     than shrink-wrapping the icon + label. */
+  width: 100%;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: calc(var(--tsy-radius) - 4px);
+  border: 1px solid transparent;
+  color: var(--tsy-muted);
+  text-align: center;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.tsy-cod-form .tsy-segment-label {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.tsy-cod-form .tsy-segment input[type='radio']:checked + .tsy-segment-inner {
+  background: var(--tsy-bg);
+  color: var(--tsy-text);
+  box-shadow: 0 1px 3px var(--tsy-border);
+}
+
+.tsy-cod-form .tsy-segment input[type='radio']:disabled + .tsy-segment-inner {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.tsy-cod-form .tsy-segment input[type='radio']:focus-visible + .tsy-segment-inner {
+  outline: 2px solid var(--tsy-primary);
+  outline-offset: 2px;
+}
+
+/* Honeypot — kept in the DOM/tab order-excluded but visually and
+   accessibly off-screen. Never display:none (bots skip those). */
+
+.tsy-cod-form .tsy-hp {
+  position: absolute;
+  inset-inline-start: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+}
+
+/* Summary */
+
+.tsy-cod-form .tsy-summary {
+  border: 1px solid var(--tsy-border);
+  border-radius: var(--tsy-radius);
+  overflow: hidden;
+}
+
+/* Header row — title + product-count badge. */
+
+.tsy-cod-form .tsy-summary-header {
+  padding: 14px 20px;
+  background: var(--tsy-surface);
+  border-block-end: 1px solid var(--tsy-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tsy-cod-form .tsy-summary-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--tsy-text);
+}
+
+.tsy-cod-form .tsy-summary-badge {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--tsy-primary);
+  background: var(--tsy-surface);
+  padding: 2px 8px;
+  border-radius: 12px;
+  border: 1px solid var(--tsy-border);
+}
+
+/* Line item row — thumbnail, title/variant, line price. */
+
+.tsy-cod-form .tsy-summary-item {
+  padding: 16px 20px;
+  border-block-end: 1px solid var(--tsy-border);
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.tsy-cod-form .tsy-summary-thumb {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: calc(var(--tsy-radius) * 0.75);
+  border: 1px solid var(--tsy-border);
+  object-fit: cover;
+}
+
+.tsy-cod-form .tsy-summary-item-info {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.tsy-cod-form .tsy-summary-item-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--tsy-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tsy-cod-form .tsy-summary-item-variant {
+  font-size: 11px;
+  color: var(--tsy-muted);
+}
+
+.tsy-cod-form .tsy-summary-item-price {
+  flex-shrink: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--tsy-text);
+}
+
+.tsy-cod-form .tsy-summary-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px 20px;
+  background: var(--tsy-bg);
+}
+
+.tsy-cod-form .tsy-summary-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: 13px;
+}
+
+.tsy-cod-form .tsy-summary-row-label {
+  font-weight: 500;
+  color: var(--tsy-text);
+}
+
+.tsy-cod-form .tsy-summary-row-value {
+  font-weight: 600;
+  color: var(--tsy-text);
+}
+
+.tsy-cod-form .tsy-summary-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: var(--tsy-surface);
+  border-top: 1px solid var(--tsy-border);
+}
+
+.tsy-cod-form .tsy-summary-total-start {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.tsy-cod-form .tsy-summary-total-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--tsy-text);
+}
+
+.tsy-cod-form .tsy-cod-sublabel {
+  font-size: 11px;
+  color: var(--tsy-muted);
+}
+
+.tsy-cod-form .tsy-summary-total-value {
+  font-size: 20px;
+  /* 700 is IBM Plex Sans Arabic's heaviest cut; asking for 900 would make
+     the browser synthesize a faux-bold, which smears Arabic letterforms. */
+  font-weight: 700;
+  color: var(--tsy-primary);
+  letter-spacing: -0.5px;
+}
+
+/* Server-priced summary: the discount rows, the free-delivery chip, the
+   savings line and the nudge of the quote (extension JS: paintQuote). All
+   logical properties, so RTL and LTR share one rule. */
+
+.tsy-cod-form .tsy-summary-discounts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tsy-cod-form .tsy-summary-discount .tsy-discount-value {
+  color: #15803d;
+}
+
+.tsy-cod-form .tsy-summary-code {
+  display: inline-block;
+  margin-inline-start: 4px;
+  padding: 0 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--tsy-muted);
+  border: 1px dashed var(--tsy-border);
+  border-radius: 10px;
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+/* The fee an offer waived, struck beside the free-delivery label. */
+.tsy-cod-form .tsy-struck {
+  margin-inline-end: 4px;
+  font-weight: 400;
+  color: var(--tsy-muted);
+  text-decoration: line-through;
+}
+
+/* Inputs changed: the previous quote stays, dimmed, until the new one lands. */
+.tsy-cod-form .tsy-summary.tsy-is-quote-stale .tsy-summary-item-price,
+.tsy-cod-form .tsy-summary.tsy-is-quote-stale .tsy-summary-body,
+.tsy-cod-form .tsy-summary.tsy-is-quote-stale .tsy-summary-total {
+  opacity: 0.5;
+  transition: opacity 0.15s ease;
+}
+
+.tsy-cod-form .tsy-summary-savings {
+  margin: 0;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #15803d;
+  background: var(--tsy-bg);
+  border-block-start: 1px solid var(--tsy-border);
+}
+
+.tsy-cod-form .tsy-summary-nudge {
+  margin: 0;
+  padding: 10px 20px;
+  font-size: 12px;
+  color: var(--tsy-muted);
+  background: var(--tsy-surface);
+  border-block-start: 1px dashed var(--tsy-border);
+}
+
+/* Discount code: a link that opens one input and a button; the answer in
+   plain words underneath. */
+
+.tsy-cod-form .tsy-code {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.tsy-cod-form .tsy-code-toggle,
+.tsy-cod-form .tsy-code-remove {
+  appearance: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--tsy-primary);
+  background: none;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.tsy-cod-form .tsy-code-remove {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--tsy-muted);
+}
+
+.tsy-cod-form .tsy-code-panel {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  width: 100%;
+}
+
+.tsy-cod-form .tsy-code-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--tsy-text);
+  background: var(--tsy-bg);
+  border: 1px solid var(--tsy-border);
+  border-radius: var(--tsy-radius);
+  padding: 11px 14px;
+  text-align: start;
+  text-transform: uppercase;
+}
+
+.tsy-cod-form .tsy-code-input::placeholder {
+  text-transform: none;
+}
+
+@media (pointer: coarse) {
+  .tsy-cod-form .tsy-code-input {
+    font-size: 16px;
+  }
+}
+
+.tsy-cod-form .tsy-code-apply {
+  appearance: none;
+  flex: 0 0 auto;
+  padding: 0 18px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--tsy-btn-text);
+  background: var(--tsy-primary);
+  border: none;
+  border-radius: var(--tsy-radius);
+  cursor: pointer;
+}
+
+.tsy-cod-form .tsy-code-status {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--tsy-muted);
+}
+
+.tsy-cod-form .tsy-code-status.is-ok {
+  color: #15803d;
+}
+
+.tsy-cod-form .tsy-code-status.is-error {
+  color: #dc2626;
+}
+
+.tsy-cod-form .tsy-success-note {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Custom fields (TEXT / IMAGE) — merchant-defined per-product fields,
+   rendered client-side to match the Tassyir storefront checkout. */
+
+.tsy-cod-form .tsy-custom-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tsy-cod-form .tsy-cf-upload {
+  position: relative;
+}
+
+/* Visually hidden but still focusable/clickable via the associated
+   <label for="..."> — never display:none (breaks the label association
+   in some browsers) or opacity alone (still tappable on top of the box). */
+.tsy-cod-form .tsy-cf-file-input {
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.tsy-cod-form .tsy-cf-upload-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 84px;
+  padding: 16px;
+  border: 1px dashed var(--tsy-border);
+  border-radius: var(--tsy-radius);
+  background: var(--tsy-surface);
+  cursor: pointer;
+  text-align: center;
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.tsy-cod-form .tsy-cf-upload-box:hover {
+  border-color: var(--tsy-primary);
+}
+
+.tsy-cod-form .tsy-cf-file-input:focus-visible + .tsy-cf-upload-box {
+  outline: 2px solid var(--tsy-primary);
+  outline-offset: 2px;
+}
+
+.tsy-cod-form .tsy-cf-upload-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  color: var(--tsy-muted);
+  flex-shrink: 0;
+}
+
+.tsy-cod-form .tsy-cf-upload-icon svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
+.tsy-cod-form .tsy-cf-upload-text {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--tsy-muted);
+}
+
+.tsy-cod-form .tsy-cf-preview {
+  position: relative;
+  display: inline-block;
+  width: 56px;
+  height: 56px;
+}
+
+.tsy-cod-form .tsy-cf-preview-img {
+  display: block;
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border: 1px solid var(--tsy-border);
+  border-radius: var(--tsy-radius);
+}
+
+.tsy-cod-form .tsy-cf-remove {
+  position: absolute;
+  top: -6px;
+  inset-inline-end: -6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  font-size: 12px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.tsy-cod-form .tsy-cf-error {
+  margin: 4px 0 0;
+  font-size: 11px;
+  font-weight: 600;
+  color: #dc2626;
+}
+
+/* Error */
+
+.tsy-cod-form .tsy-error {
+  color: #dc2626;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 12px;
+  border: 1px solid var(--tsy-border);
+  border-radius: var(--tsy-radius);
+  background: var(--tsy-surface);
+}
+
+/* Submit button */
+
+.tsy-cod-form .tsy-submit-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  appearance: none;
+  border: none;
+  width: 100%;
+  padding: 14px 28px;
+  font-family: inherit;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--tsy-btn-text);
+  background: var(--tsy-primary);
+  border-radius: var(--tsy-radius);
+  cursor: pointer;
+  transition:
+    filter 0.15s ease,
+    opacity 0.15s ease;
+}
+
+.tsy-cod-form .tsy-submit-btn:hover:not(:disabled) {
+  filter: brightness(0.95);
+}
+
+.tsy-cod-form .tsy-submit-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.tsy-cod-form .tsy-spinner {
+  position: absolute;
+  top: 50%;
+  inset-inline-start: 50%;
+  width: 1.1rem;
+  height: 1.1rem;
+  margin: 0;
+  transform: translate(-50%, -50%);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: var(--tsy-btn-text);
+  border-radius: 50%;
+  animation: tsy-spin 0.7s linear infinite;
+}
+
+@keyframes tsy-spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* Success panel */
+
+.tsy-cod-form .tsy-success {
+  text-align: center;
+  padding: 1.5rem 0.5rem;
+}
+
+.tsy-cod-form .tsy-success-icon {
+  position: relative;
+  display: block;
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 0.85rem;
+  border-radius: 50%;
+  background: var(--tsy-primary);
+}
+
+.tsy-cod-form .tsy-success-icon::after {
+  content: '';
+  position: absolute;
+  inset-inline-start: 29%;
+  top: 46%;
+  width: 12px;
+  height: 22px;
+  border-inline-end: 3px solid var(--tsy-btn-text);
+  border-block-end: 3px solid var(--tsy-btn-text);
+  transform: translateY(-60%) rotate(45deg);
+}
+
+.tsy-cod-form .tsy-success p {
+  margin: 0 0 0.4rem;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.tsy-cod-form .tsy-order-id {
+  font-size: 11px;
+  color: var(--tsy-muted);
+}
+
+/* Small screens: keep everything full width, no fixed widths anywhere
+   above except the quantity stepper, which is intentionally compact. */
+
+@media (max-width: 480px) {
+  .tsy-cod-form {
+    padding: 20px 16px;
+  }
+}

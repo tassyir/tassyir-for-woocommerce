@@ -1,0 +1,9 @@
+/vendor/
+/vendor-prefixed/
+/bin/strauss.phar
+/build/
+/dist/
+/node_modules/
+/.phpunit.result.cache
+/tests/stub/requests.log
+/bin/strauss.tmp

@@ -6,7 +6,7 @@ Tested up to: 7.1
 Requires PHP: 7.4
 WC requires at least: 8.0
 WC tested up to: 11.2
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -92,6 +92,9 @@ Both the classic checkout and the block checkout, with or without WooCommerce's 
 7. The form filled in: commune with a desk, desk delivery, live total with Tassyir's delivery fee.
 
 == Changelog ==
+
+= 1.0.1 =
+* Redesigned settings screens: connection status at a glance, clearer actions, and a cleaner checkout form tab with switches, a language switcher for the texts and a save bar.
 
 = 1.0.0 =
 * First release: one-click connect, order queue with retries, product and photo sync, status check with automatic repair of missed orders.

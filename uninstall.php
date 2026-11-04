@@ -9,7 +9,7 @@
 defined( 'WP_UNINSTALL_PLUGIN' ) || exit;
 
 if ( ! defined( 'TASSYIR_WC_VERSION' ) ) {
-	define( 'TASSYIR_WC_VERSION', '1.0.1' );
+	define( 'TASSYIR_WC_VERSION', '1.0.2' );
 }
 
 $tassyir_autoload = __DIR__ . '/vendor/autoload.php';

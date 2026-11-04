@@ -52,9 +52,22 @@ final class Placement {
 	 */
 	public function register_hooks(): void {
 		add_action( 'init', array( $this, 'register' ) );
-		add_action( 'wp_enqueue_scripts', array( Form::class, 'register_assets' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ) );
 		add_action( 'wp', array( $this, 'product_page_hooks' ) );
 		add_action( 'template_redirect', array( $this, 'redirect_cart_and_checkout' ) );
+	}
+
+	/**
+	 * Registers the form's assets, and loads the campaign capture script on every front-end
+	 * page of a connected site: an ad may land on the home or a category page, where no form
+	 * (and so no form script) renders. The script is static, so page caches serve it as is.
+	 * Disconnected, the form never renders and nothing is loaded.
+	 */
+	public function enqueue_assets(): void {
+		Form::register_assets();
+		if ( $this->connection->is_connected() ) {
+			wp_enqueue_script( Form::ATTRIBUTION_HANDLE );
+		}
 	}
 
 	/**

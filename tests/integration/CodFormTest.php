@@ -750,4 +750,111 @@ final class CodFormTest extends Integration_TestCase {
 			)
 		);
 	}
+
+	public function test_attribution_is_kept_cleaned_and_never_rejects_an_order(): void {
+		$clean = Rest::clean_submission(
+			$this->submission(
+				array(
+					'attribution' => array(
+						'source'     => ' facebook ',
+						'medium'     => 'paid_social',
+						'campaign'   => 'ramadan',
+						'content'    => '',
+						'campaignId' => '120210000000001',
+						'contentId'  => '120210000000002',
+						'fbclid'     => 'IwAR-click-id',
+						'gclid'      => 'abc',
+						'extra'      => 'nope',
+					),
+				)
+			)
+		);
+		$this->assertIsArray( $clean );
+		$this->assertSame(
+			array(
+				'source'     => 'facebook',
+				'medium'     => 'paid_social',
+				'campaign'   => 'ramadan',
+				'campaignId' => '120210000000001',
+				'contentId'  => '120210000000002',
+			),
+			$clean['attribution']
+		);
+
+		// Non-scalars, nested arrays and over-long values never reject the order.
+		$messy = Rest::clean_submission(
+			$this->submission(
+				array(
+					'attribution' => array(
+						'source'   => array( 'facebook' ),
+						'medium'   => 42,
+						'campaign' => str_repeat( 'x', 400 ),
+						'content'  => null,
+					),
+				)
+			)
+		);
+		$this->assertIsArray( $messy );
+		$this->assertSame( array( 'campaign' => str_repeat( 'x', 255 ) ), $messy['attribution'] );
+
+		// Not an array, or nothing usable: no key at all, still a valid submission.
+		foreach ( array( 'utm_source=x', 7, array(), array( 'unknown' => 'x' ), array( 'source' => ' ' ) ) as $bad ) {
+			$out = Rest::clean_submission( $this->submission( array( 'attribution' => $bad ) ) );
+			$this->assertIsArray( $out, 'a bad attribution must never be an error' );
+			$this->assertArrayNotHasKey( 'attribution', $out );
+		}
+		$this->assertArrayNotHasKey( 'attribution', (array) Rest::clean_submission( $this->submission() ) );
+	}
+
+	public function test_submit_body_carries_attribution_only_when_present(): void {
+		$with = Rest::clean_submission( $this->submission( array( 'attribution' => array( 'source' => 'tiktok' ) ) ) );
+		$this->assertIsArray( $with );
+		$this->assertSame( array( 'source' => 'tiktok' ), Rest::submit_body( $with, false )['attribution'] );
+
+		$without = Rest::clean_submission( $this->submission() );
+		$this->assertIsArray( $without );
+		$this->assertArrayNotHasKey( 'attribution', Rest::submit_body( $without, false ) );
+	}
+
+	public function test_a_refused_attribution_never_costs_the_order(): void {
+		$this->answer( 400, array( 'message' => array( 'property attribution should not exist' ) ) );
+		$this->answer_submit( 'allow' );
+		$sent     = $this->submission( array( 'attribution' => array( 'source' => 'facebook' ) ) );
+		$response = $this->call( 'POST', '/orders', $sent );
+
+		$this->assertSame( 200, $response->get_status() );
+		$this->assertCount( 1, $this->form_orders() );
+		$this->assertCount( 2, $this->requests );
+		$first  = json_decode( (string) $this->requests[0]['args']['body'], true );
+		$second = json_decode( (string) $this->requests[1]['args']['body'], true );
+		$this->assertSame( array( 'source' => 'facebook' ), $first['attribution'] );
+		$this->assertArrayNotHasKey( 'attribution', $second );
+		$this->assertSame( $first['submissionId'], $second['submissionId'] );
+	}
+
+	public function test_any_other_400_is_not_sent_twice(): void {
+		$this->answer( 400, array( 'message' => array( 'phone must be shorter' ) ) );
+		$response = $this->call( 'POST', '/orders', $this->submission( array( 'attribution' => array( 'source' => 'facebook' ) ) ) );
+
+		$this->assertSame( 400, $response->get_status() );
+		$this->assertCount( 1, $this->requests );
+	}
+
+	public function test_attribution_script_loads_on_every_page_when_connected_only(): void {
+		$placement = new \Tassyir\WooCommerce\Cod\Placement( new \Tassyir\WooCommerce\Connection() );
+
+		// Other tests render a form in this process, which leaves its script in the queue.
+		wp_dequeue_script( Form::HANDLE );
+		wp_dequeue_script( Form::ATTRIBUTION_HANDLE );
+		$placement->enqueue_assets();
+		$this->assertTrue( wp_script_is( Form::ATTRIBUTION_HANDLE, 'enqueued' ), 'a page without any form still captures the campaign' );
+		$this->assertFalse( wp_script_is( Form::HANDLE, 'enqueued' ), 'the form script stays on form pages' );
+		$this->assertContains( Form::ATTRIBUTION_HANDLE, wp_scripts()->registered[ Form::HANDLE ]->deps );
+
+		wp_dequeue_script( Form::ATTRIBUTION_HANDLE );
+		delete_option( 'tassyir_connection_id' );
+		delete_option( 'tassyir_secret' );
+		$placement->enqueue_assets();
+		$this->assertFalse( wp_script_is( Form::ATTRIBUTION_HANDLE, 'enqueued' ), 'disconnected: nothing is loaded' );
+	}
 }

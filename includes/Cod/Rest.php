@@ -262,7 +262,14 @@ final class Rest {
 			return self::respond( self::success( $held, (array) $receipt['answer'], $settings, $receipt ) + array( 'duplicate' => true ) );
 		}
 
-		$response = $this->storefront->submit( self::submit_body( $submission, ! empty( $settings['behind_cloudflare'] ) ) );
+		$body     = self::submit_body( $submission, ! empty( $settings['behind_cloudflare'] ) );
+		$response = $this->storefront->submit( $body );
+		if ( isset( $body['attribution'] ) && self::refused_attribution( $response ) ) {
+			// A tracking value must never cost an order (an API from before the field refuses the
+			// key, say after a rollback): once more without it, same submission id.
+			unset( $body['attribution'] );
+			$response = $this->storefront->submit( $body );
+		}
 		if ( ! $response->ok() ) {
 			return self::upstream_error( $response );
 		}
@@ -419,6 +426,10 @@ final class Rest {
 		if ( '' !== $token ) {
 			$out['quoteToken'] = $token;
 		}
+		$attribution = self::attribution( $params['attribution'] ?? null );
+		if ( array() !== $attribution ) {
+			$out['attribution'] = $attribution;
+		}
 		$codes = self::codes( $params['codes'] ?? null );
 		if ( null !== $codes ) {
 			$out['codes'] = $codes;
@@ -529,7 +540,7 @@ final class Rest {
 			'customFieldRules' => $submission['customFieldRules'],
 			'customer'         => Request_Guard::customer( (string) $submission['deviceId'], $behind_cloudflare ),
 		);
-		foreach ( array( 'phone2', 'address', 'note', 'quoteToken', 'codes' ) as $key ) {
+		foreach ( array( 'phone2', 'address', 'note', 'quoteToken', 'codes', 'attribution' ) as $key ) {
 			if ( isset( $submission[ $key ] ) && '' !== $submission[ $key ] && array() !== $submission[ $key ] ) {
 				$body[ $key ] = $submission[ $key ];
 			}
@@ -548,6 +559,31 @@ final class Rest {
 		}
 		$code = (int) $value;
 		return $code >= 1 && $code <= 58 ? $code : null;
+	}
+
+	/**
+	 * The campaign the visitor arrived with: only the six known keys, as plain strings of at
+	 * most 255 characters, empties dropped. Never an error: a tracking value must not reject an
+	 * order, so anything unusable is simply left out.
+	 *
+	 * @param mixed $raw Raw value.
+	 * @return array<string, string>
+	 */
+	private static function attribution( $raw ): array {
+		$out = array();
+		if ( ! is_array( $raw ) ) {
+			return $out;
+		}
+		foreach ( array( 'source', 'medium', 'campaign', 'content', 'campaignId', 'contentId' ) as $key ) {
+			if ( ! isset( $raw[ $key ] ) || ! is_string( $raw[ $key ] ) ) {
+				continue;
+			}
+			$value = self::text( $raw[ $key ], 255 );
+			if ( '' !== $value ) {
+				$out[ $key ] = $value;
+			}
+		}
+		return $out;
 	}
 
 	/**
@@ -607,6 +643,15 @@ final class Rest {
 			),
 			$status
 		);
+	}
+
+	/**
+	 * Whether Tassyir answered 400 because of the attribution field.
+	 *
+	 * @param Api_Response $response Tassyir's answer.
+	 */
+	private static function refused_attribution( Api_Response $response ): bool {
+		return 400 === $response->status && false !== strpos( (string) wp_json_encode( $response->body ), 'attribution' );
 	}
 
 	/**

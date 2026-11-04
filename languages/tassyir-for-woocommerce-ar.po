@@ -19,7 +19,6 @@ msgstr ""
 msgid "Tassyir for WooCommerce"
 msgstr ""
 
-#. Plugin URI of the plugin
 #. Author URI of the plugin
 #: tassyir-for-woocommerce.php
 msgid "https://tassyir.io"
@@ -591,7 +590,7 @@ msgid "When you order with the store’s cash-on-delivery form, Tassyir also rec
 msgstr "عند الطلب عبر نموذج الدفع عند الاستلام في المتجر، يتلقى Tassyir أيضًا عنوان IP الخاص بك، ومعرّف متصفحك (user agent)، ومعرّف جهاز عشوائيًا محفوظًا في متصفحك (التخزين المحلي وملف تعريف ارتباط باسم tsy_device_id)، لتسعير الطلب وحماية المتجر من الطلبات الوهمية."
 
 #. translators: %s: URL of Tassyir's privacy policy.
-#: includes/Admin/Privacy.php:44
+#: includes/Admin/Privacy.php:45
 #, php-format
 msgid "Tassyir’s privacy policy: %s"
 msgstr "سياسة الخصوصية لـ Tassyir: %s"
@@ -821,11 +820,11 @@ msgstr "الهاتف الثاني: %s"
 msgid "Order placed with the Tassyir COD form."
 msgstr "طلب أُنشئ عبر نموذج الدفع عند الاستلام Tassyir."
 
-#: includes/Cod/Placement.php:94
+#: includes/Cod/Placement.php:107
 msgid "Tassyir COD form: choose a product (or place the block on a product page). The site must be connected to Tassyir."
 msgstr "نموذج Tassyir للدفع عند الاستلام: اختر منتجًا (أو ضع المكوّن في صفحة منتج). يجب أن يكون الموقع مربوطًا بـ Tassyir."
 
-#: tassyir-for-woocommerce.php:40
+#: tassyir-for-woocommerce.php:39
 msgid "Tassyir for WooCommerce is incomplete (missing vendor files). Please reinstall it from the zip downloaded from your Tassyir dashboard."
 msgstr "إضافة Tassyir for WooCommerce غير مكتملة (ملفات vendor مفقودة). يرجى إعادة تثبيتها من الملف المضغوط المحمّل من لوحة تحكم Tassyir."
 
@@ -1022,3 +1021,7 @@ msgstr "لم تتم المزامنة بعد"
 #: includes/Admin/Settings_Page.php:816
 msgid "Running…"
 msgstr "قيد التنفيذ…"
+
+#: includes/Admin/Privacy.php:43
+msgid "The store also remembers, in your browser (local storage, or a cookie named tsy_attr when storage is blocked) for 30 days, the advertising campaign you arrived with (utm_* parameters, campaign and ad ids, and the name of the ad network). If you order with the cash-on-delivery form, this is sent to Tassyir so the order can be attributed to its campaign. Ad click identifiers are never stored or sent."
+msgstr "يحتفظ المتجر أيضًا في متصفحك (التخزين المحلي، أو ملف تعريف ارتباط باسم tsy_attr إذا كان التخزين محظورًا) لمدة 30 يومًا بالحملة الإعلانية التي وصلت عبرها (معلمات utm_* ومعرّفات الحملة والإعلان واسم الشبكة الإعلانية). إذا طلبت عبر نموذج الدفع عند الاستلام، تُرسل هذه المعلومات إلى Tassyir لربط الطلب بحملته. لا تُخزَّن معرّفات النقر على الإعلانات ولا تُرسل أبدًا."

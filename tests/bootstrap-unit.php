@@ -6,6 +6,6 @@
  */
 
 define( 'ABSPATH', __DIR__ . '/' );
-define( 'TASSYIR_WC_VERSION', '1.0.1' );
+define( 'TASSYIR_WC_VERSION', '1.0.2' );
 
 require_once dirname( __DIR__ ) . '/vendor/autoload.php';

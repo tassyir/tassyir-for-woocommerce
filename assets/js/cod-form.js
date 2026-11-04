@@ -2225,6 +2225,14 @@
       if (el.address && el.address.value.trim()) payload.address = el.address.value.trim();
       if (el.note && el.note.value.trim()) payload.note = el.note.value.trim();
       payload.deviceId = getDeviceId();
+      // The campaign the visitor arrived with (utm_*, ad ids, the ad network
+      // derived from a click id), kept by attribution.js. Optional: a failure
+      // here must never stop an order. Not part of the quote body — it has no
+      // effect on pricing and would change the quote cache key.
+      try {
+        var attribution = window.tassyirAttribution && window.tassyirAttribution.read();
+        if (attribution) payload.attribution = attribution;
+      } catch (e) { /* attribution is optional */ }
       // Honeypot: only ever populated by bots — sending it lets the server
       // reject through the same validation path as any other bad request.
       if (el.honeypot && el.honeypot.value) payload.website = el.honeypot.value;

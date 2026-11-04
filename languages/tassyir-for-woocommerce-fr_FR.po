@@ -19,7 +19,6 @@ msgstr ""
 msgid "Tassyir for WooCommerce"
 msgstr ""
 
-#. Plugin URI of the plugin
 #. Author URI of the plugin
 #: tassyir-for-woocommerce.php
 msgid "https://tassyir.io"
@@ -579,7 +578,7 @@ msgid "When you order with the store’s cash-on-delivery form, Tassyir also rec
 msgstr "Quand vous commandez avec le formulaire paiement à la livraison de la boutique, Tassyir reçoit aussi votre adresse IP, l’agent utilisateur de votre navigateur et un identifiant d’appareil aléatoire conservé dans votre navigateur (stockage local et cookie nommé tsy_device_id), pour calculer le prix de la commande et protéger la boutique contre les fausses commandes."
 
 #. translators: %s: URL of Tassyir's privacy policy.
-#: includes/Admin/Privacy.php:44
+#: includes/Admin/Privacy.php:45
 #, php-format
 msgid "Tassyir’s privacy policy: %s"
 msgstr "Politique de confidentialité de Tassyir : %s"
@@ -801,11 +800,11 @@ msgstr "Deuxième téléphone : %s"
 msgid "Order placed with the Tassyir COD form."
 msgstr "Commande passée avec le formulaire COD Tassyir."
 
-#: includes/Cod/Placement.php:94
+#: includes/Cod/Placement.php:107
 msgid "Tassyir COD form: choose a product (or place the block on a product page). The site must be connected to Tassyir."
 msgstr "Formulaire COD Tassyir : choisissez un produit (ou placez le bloc sur une page produit). Le site doit être connecté à Tassyir."
 
-#: tassyir-for-woocommerce.php:40
+#: tassyir-for-woocommerce.php:39
 msgid "Tassyir for WooCommerce is incomplete (missing vendor files). Please reinstall it from the zip downloaded from your Tassyir dashboard."
 msgstr "Tassyir for WooCommerce est incomplète (fichiers vendor manquants). Réinstallez-la depuis le zip téléchargé dans votre tableau de bord Tassyir."
 
@@ -1002,3 +1001,7 @@ msgstr "Pas encore synchronisé"
 #: includes/Admin/Settings_Page.php:816
 msgid "Running…"
 msgstr "En cours…"
+
+#: includes/Admin/Privacy.php:43
+msgid "The store also remembers, in your browser (local storage, or a cookie named tsy_attr when storage is blocked) for 30 days, the advertising campaign you arrived with (utm_* parameters, campaign and ad ids, and the name of the ad network). If you order with the cash-on-delivery form, this is sent to Tassyir so the order can be attributed to its campaign. Ad click identifiers are never stored or sent."
+msgstr "La boutique garde aussi en mémoire dans votre navigateur (stockage local, ou cookie nommé tsy_attr si le stockage est bloqué), pendant 30 jours, la campagne publicitaire par laquelle vous êtes arrivé (paramètres utm_*, identifiants de campagne et d’annonce, et nom du réseau publicitaire). Si vous commandez avec le formulaire paiement à la livraison, ces informations sont envoyées à Tassyir pour rattacher la commande à sa campagne. Les identifiants de clic publicitaire ne sont jamais conservés ni envoyés."

@@ -6,7 +6,7 @@ Tested up to: 7.1
 Requires PHP: 7.4
 WC requires at least: 8.0
 WC tested up to: 11.2
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,6 +37,7 @@ This plugin connects to **Tassyir** (https://tassyir.io), the order management s
   * every 15 minutes (as set by Tassyir) and when the settings page is opened: plugin, WordPress, WooCommerce and PHP versions, checkout type, queue size, the time WP-Cron last ran, and the ids, statuses and dates of the 50 most recent orders with their Tassyir state;
   * when connecting and disconnecting: the site address, versions and a one-time code.
   * with the COD form turned on: when a page shows the form, the wilaya list, delivery fees, communes, the product's custom fields and offers, and the price of the cart (product, quantity, wilaya, delivery method, and the phone number once complete); when the customer submits it, the order details (name, phones, wilaya, commune, address, note, products, custom-field values and uploaded images) with the customer's IP address, any forwarded-for headers, browser user agent and a random device id kept in the customer's browser, so Tassyir can price the order and check it for spam.
+  * with the COD form turned on, also on submit: the campaign parameters the visitor arrived with (`utm_*`, campaign and ad ids, and the name of the ad network derived from a click id; never the click id itself), kept in the visitor's browser (local storage, or a cookie when storage is blocked) for 30 days, so the order can be attributed to its campaign.
 * **Tassyir dashboard** (`https://app.tassyir.io`): the browser is sent there when the owner clicks "Connect" or "Reconnect", to choose the business and store; no data is sent by the server.
 * **Updates**: WordPress asks `https://api.tassyir.io/woo-plugin/update.json` whether a newer version of this plugin exists (only in the build downloaded from Tassyir).
 
@@ -92,6 +93,9 @@ Both the classic checkout and the block checkout, with or without WooCommerce's 
 7. The form filled in: commune with a desk, desk delivery, live total with Tassyir's delivery fee.
 
 == Changelog ==
+
+= 1.0.2 =
+* The COD form now sends the campaign the visitor arrived with (UTM parameters, campaign and ad ids, the ad network), kept in their browser for 30 days, so orders are attributed in Tassyir. Click ids are never stored or sent.
 
 = 1.0.1 =
 * Redesigned settings screens: connection status at a glance, clearer actions, and a cleaner checkout form tab with switches, a language switcher for the texts and a save bar.

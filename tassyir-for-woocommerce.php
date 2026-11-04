@@ -2,7 +2,7 @@
 /**
  * Plugin Name:          Tassyir for WooCommerce
  * Description:          Send WooCommerce orders and products to Tassyir, with a cash-on-delivery order form. Every order is queued and retried until Tassyir confirms it.
- * Version:              1.0.1
+ * Version:              1.0.2
  * Requires at least:    6.2
  * Requires PHP:         7.4
  * Requires Plugins:     woocommerce
@@ -20,7 +20,7 @@
 
 defined( 'ABSPATH' ) || exit; // Never run when the file is opened directly.
 
-define( 'TASSYIR_WC_VERSION', '1.0.1' );
+define( 'TASSYIR_WC_VERSION', '1.0.2' );
 define( 'TASSYIR_WC_FILE', __FILE__ );
 define( 'TASSYIR_WC_DIR', plugin_dir_path( __FILE__ ) );
 

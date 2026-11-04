@@ -21,6 +21,12 @@ final class Form {
 	const HANDLE = 'tassyir-cod-form';
 
 	/**
+	 * Campaign capture script: loaded on every front-end page of a connected site, and a
+	 * dependency of the form's script so a form page always has it.
+	 */
+	const ATTRIBUTION_HANDLE = 'tassyir-attribution';
+
+	/**
 	 * Variants listed at most (a variation with "Any" attributes expands to one per value).
 	 */
 	const MAX_VARIANTS = 200;
@@ -37,7 +43,8 @@ final class Form {
 	 */
 	public static function register_assets(): void {
 		wp_register_style( self::HANDLE, plugins_url( 'assets/css/cod-form.css', TASSYIR_WC_FILE ), array(), TASSYIR_WC_VERSION );
-		wp_register_script( self::HANDLE, plugins_url( 'assets/js/cod-form.js', TASSYIR_WC_FILE ), array(), TASSYIR_WC_VERSION, true );
+		wp_register_script( self::ATTRIBUTION_HANDLE, plugins_url( 'assets/js/attribution.js', TASSYIR_WC_FILE ), array(), TASSYIR_WC_VERSION, true );
+		wp_register_script( self::HANDLE, plugins_url( 'assets/js/cod-form.js', TASSYIR_WC_FILE ), array( self::ATTRIBUTION_HANDLE ), TASSYIR_WC_VERSION, true );
 	}
 
 	/**

@@ -24,6 +24,7 @@
   var KEY = 'tsy_attr';
   var WINDOW_MS = 30 * 24 * 60 * 60 * 1000;
   var MAX_AGE_S = 30 * 24 * 60 * 60;
+  var CLOCK_SKEW_MS = 24 * 60 * 60 * 1000;
   var MAX_LEN = 255;
 
   // Utm field -> URL params; the first matching param wins.
@@ -62,8 +63,10 @@
     var v = String(value).replace(/^\s+|\s+$/g, '');
     if (!v) return true;
     var decoded = v.indexOf('%') !== -1 ? safeDecode(v) : v;
+    // Only a value that is wholly a macro: "[Winter] Sale" is a real campaign name.
     return (
-      /^[{[]|[}\]]$/.test(decoded) ||
+      /^\{[^}]*\}$/.test(decoded) ||
+      /^\[[^\]]*\]$/.test(decoded) ||
       decoded.indexOf('{{') !== -1 ||
       decoded.indexOf('}}') !== -1 ||
       /^__.+__$/.test(decoded)
@@ -96,8 +99,11 @@
     return Object.prototype.hasOwnProperty.call(obj, key);
   }
 
+  // Never half an emoji: PHP's json_decode refuses an unpaired surrogate, so WordPress
+  // would refuse the whole order, for as long as the value stayed saved.
   function cap(value) {
-    return String(value).slice(0, MAX_LEN);
+    var capped = String(value).slice(0, MAX_LEN);
+    return /[\uD800-\uDBFF]$/.test(capped) ? capped.slice(0, -1) : capped;
   }
 
   function parseUtm(exact) {
@@ -121,7 +127,7 @@
   // The channel a click id proves ({source, medium}), or null. The id's VALUE is
   // only tested for presence; it is never returned.
   function clickFloor(lower) {
-    if (has(lower, FBCLID.name) && lower[FBCLID.name]) {
+    if (has(lower, FBCLID.name) && lower[FBCLID.name] && !isMacroValue(lower[FBCLID.name])) {
       return { source: FBCLID.source, medium: FBCLID.medium };
     }
     for (var i = 0; i < CLICK_IDS.length; i++) {
@@ -148,8 +154,20 @@
     }
   }
 
+  // Inside the window. A timestamp further ahead than a clock correction explains would
+  // otherwise stretch the 30 days by however far it is ahead.
   function fresh(stored, now) {
-    return !!stored && now - stored.t <= WINDOW_MS;
+    if (!stored) return false;
+    var age = now - stored.t;
+    return age >= -CLOCK_SKEW_MS && age <= WINDOW_MS;
+  }
+
+  // What the privacy text promises: past the window, or unreadable, it is deleted.
+  function forgetStale(now) {
+    try {
+      var raw = window.localStorage.getItem(KEY);
+      if (raw !== null && !fresh(parseStored(raw), now)) window.localStorage.removeItem(KEY);
+    } catch (e) { /* storage blocked: the cookie expires by itself */ }
   }
 
   function readLocal() {
@@ -182,7 +200,13 @@
     try {
       window.localStorage.setItem(KEY, json);
       return;
-    } catch (e) { /* storage blocked: the cookie below keeps it */ }
+    } catch (e) {
+      // Storage blocked or full: the cookie below keeps it, and an older value left in
+      // storage must not win over it (load() reads storage first).
+      try {
+        window.localStorage.removeItem(KEY);
+      } catch (e2) { /* blocked */ }
+    }
     try {
       var secure = window.location && window.location.protocol === 'https:' ? '; Secure' : '';
       document.cookie = KEY + '=' + encodeURIComponent(json) + '; path=/; max-age=' + MAX_AGE_S + '; SameSite=Lax' + secure;
@@ -192,12 +216,13 @@
   // ── capture / read ────────────────────────────────────────────────────────
 
   function capture() {
+    var now = Date.now();
+    forgetStale(now);
     var query = parseQuery(window.location && window.location.search);
     var utm = parseUtm(query.exact);
     var floor = utm ? null : clickFloor(query.lower);
     if (!utm && !floor) return; // nothing on this URL: write nothing
 
-    var now = Date.now();
     if (utm) {
       save({ u: utm, t: now }); // the last campaign replaces the stored one whole
       return;

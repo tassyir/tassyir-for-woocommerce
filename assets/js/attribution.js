@@ -200,16 +200,13 @@
     try {
       window.localStorage.setItem(KEY, json);
       return;
-    } catch (e) {
-      // Storage blocked or full: the cookie below keeps it, and an older value left in
-      // storage must not win over it (load() reads storage first).
-      try {
-        window.localStorage.removeItem(KEY);
-      } catch (e2) { /* blocked */ }
-    }
+    } catch (e) { /* storage blocked or full: the cookie below keeps it */ }
     try {
       var secure = window.location && window.location.protocol === 'https:' ? '; Secure' : '';
       document.cookie = KEY + '=' + encodeURIComponent(json) + '; path=/; max-age=' + MAX_AGE_S + '; SameSite=Lax' + secure;
+      // An older value left in storage would win over the cookie (load() reads storage first),
+      // but a browser silently refuses a cookie over 4 KB: only a cookie that took replaces it.
+      if (readCookie() === json) window.localStorage.removeItem(KEY);
     } catch (e) { /* nothing left to try */ }
   }
 

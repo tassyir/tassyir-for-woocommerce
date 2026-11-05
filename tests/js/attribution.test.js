@@ -44,6 +44,7 @@ function makeEnv(opts) {
     },
     set: function (line) {
       cookieWrites.push(line);
+      if (opts.refuseCookies) return; // a browser silently refuses a cookie over 4 KB
       var pair = line.split(';')[0];
       var eq = pair.indexOf('=');
       jar[pair.slice(0, eq)] = pair.slice(eq + 1);
@@ -136,6 +137,12 @@ test('when storage fills up, the newer campaign in the cookie wins over the old 
   var env = makeEnv({ storage: { tsy_attr: JSON.stringify({ u: { source: 'facebook', campaign: 'old' }, t: T0 - DAY }) }, setFails: true });
   same(load(env, '?utm_source=tiktok&utm_campaign=new').read(), { source: 'tiktok', campaign: 'new' });
   assert.strictEqual(env.store.tsy_attr, undefined);
+});
+
+test('when storage is full and the cookie is refused too, the old campaign is kept', function () {
+  var env = makeEnv({ storage: { tsy_attr: JSON.stringify({ u: { source: 'facebook', campaign: 'old' }, t: T0 - DAY }) }, setFails: true, refuseCookies: true });
+  same(load(env, '?utm_source=tiktok&utm_campaign=new').read(), { source: 'facebook', campaign: 'old' });
+  assert.ok(env.store.tsy_attr, 'better an older campaign than none');
 });
 
 test('full UTMs are captured and read back', function () {

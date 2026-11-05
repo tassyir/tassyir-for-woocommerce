@@ -28,10 +28,15 @@ function makeEnv(opts) {
       return Object.prototype.hasOwnProperty.call(store, k) ? store[k] : null;
     },
     setItem: function (k, v) {
-      if (opts.blocked) throw new Error('SecurityError');
+      if (opts.blocked || env.setFails) throw new Error('QuotaExceededError');
       store[k] = String(v);
+    },
+    removeItem: function (k) {
+      if (opts.blocked) throw new Error('SecurityError');
+      delete store[k];
     }
   };
+  var env = { setFails: !!opts.setFails };
   var document = {};
   Object.defineProperty(document, 'cookie', {
     get: function () {
@@ -39,12 +44,20 @@ function makeEnv(opts) {
     },
     set: function (line) {
       cookieWrites.push(line);
+      if (opts.refuseCookies) return; // a browser silently refuses a cookie over 4 KB
       var pair = line.split(';')[0];
       var eq = pair.indexOf('=');
       jar[pair.slice(0, eq)] = pair.slice(eq + 1);
     }
   });
-  return { store: store, jar: jar, clock: clock, cookieWrites: cookieWrites, localStorage: localStorage, document: document, opts: opts };
+  env.store = store;
+  env.jar = jar;
+  env.clock = clock;
+  env.cookieWrites = cookieWrites;
+  env.localStorage = localStorage;
+  env.document = document;
+  env.opts = opts;
+  return env;
 }
 
 function load(env, search, protocol) {
@@ -74,6 +87,63 @@ function same(actual, expected, msg) {
 
 var tests = [];
 function test(name, fn) { tests.push([name, fn]); }
+
+test('a cut never splits an emoji, which would cost the order', function () {
+  var emoji = String.fromCodePoint(0x1F600);
+  var value = new Array(255).join('a') + emoji + 'tail'; // 254 a's, then the emoji at the cut
+  var a = load(makeEnv(), '?utm_campaign=' + encodeURIComponent(value));
+  var read = a.read();
+  assert.strictEqual(read.campaign, new Array(255).join('a'));
+  // What WordPress would receive decodes in a strict parser: no lone surrogate escape.
+  assert.ok(!/\\ud[89ab]/i.test(JSON.stringify(read)));
+});
+
+test('an emoji that fits is kept', function () {
+  var emoji = String.fromCodePoint(0x1F600);
+  var a = load(makeEnv(), '?utm_campaign=' + encodeURIComponent('ramadan ' + emoji));
+  assert.strictEqual(a.read().campaign, 'ramadan ' + emoji);
+});
+
+test('a real campaign name that only starts or ends with a bracket is kept', function () {
+  var a = load(makeEnv(), '?utm_campaign=' + encodeURIComponent('[Winter] Sale') + '&utm_content=' + encodeURIComponent('Promo [AR]') + '&utm_id=[campaign_id]&ad_id={adid}');
+  same(a.read(), { campaign: '[Winter] Sale', content: 'Promo [AR]' });
+});
+
+test('an unexpanded fbclid is no click, and does not hide a real one', function () {
+  assert.strictEqual(load(makeEnv(), '?fbclid={{fbclid}}').read(), null);
+  same(load(makeEnv(), '?fbclid={{fbclid}}&gclid=abc').read(), { source: 'google', medium: 'cpc' });
+});
+
+test('a timestamp far in the future does not stretch the window', function () {
+  var ahead = makeEnv({ storage: { tsy_attr: JSON.stringify({ u: { source: 'facebook' }, t: T0 + 10 * DAY }) } });
+  assert.strictEqual(load(ahead, '').read(), null);
+  var slightly = makeEnv({ storage: { tsy_attr: JSON.stringify({ u: { source: 'facebook' }, t: T0 + 60000 }) } });
+  same(load(slightly, '').read(), { source: 'facebook' });
+});
+
+test('an expired or corrupt value is deleted, on any page', function () {
+  var expired = makeEnv({ storage: { tsy_attr: JSON.stringify({ u: { source: 'facebook' }, t: T0 - 31 * DAY }) } });
+  load(expired, '');
+  assert.strictEqual(expired.store.tsy_attr, undefined);
+  var corrupt = makeEnv({ storage: { tsy_attr: '{not json' } });
+  load(corrupt, '');
+  assert.strictEqual(corrupt.store.tsy_attr, undefined);
+  var live = makeEnv({ storage: { tsy_attr: JSON.stringify({ u: { source: 'facebook' }, t: T0 - DAY }) } });
+  load(live, '');
+  assert.ok(live.store.tsy_attr, 'a value inside the window stays');
+});
+
+test('when storage fills up, the newer campaign in the cookie wins over the old stored one', function () {
+  var env = makeEnv({ storage: { tsy_attr: JSON.stringify({ u: { source: 'facebook', campaign: 'old' }, t: T0 - DAY }) }, setFails: true });
+  same(load(env, '?utm_source=tiktok&utm_campaign=new').read(), { source: 'tiktok', campaign: 'new' });
+  assert.strictEqual(env.store.tsy_attr, undefined);
+});
+
+test('when storage is full and the cookie is refused too, the old campaign is kept', function () {
+  var env = makeEnv({ storage: { tsy_attr: JSON.stringify({ u: { source: 'facebook', campaign: 'old' }, t: T0 - DAY }) }, setFails: true, refuseCookies: true });
+  same(load(env, '?utm_source=tiktok&utm_campaign=new').read(), { source: 'facebook', campaign: 'old' });
+  assert.ok(env.store.tsy_attr, 'better an older campaign than none');
+});
 
 test('full UTMs are captured and read back', function () {
   var env = makeEnv();
